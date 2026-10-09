@@ -1,35 +1,70 @@
-# AlphaMetrics AI — Where Science Meets Strategy
+# AlphaMetrics AI
 
-Vienna-based workplace-embedded AI training. We don't teach AI in a classroom — we embed in your team, with your data, on your actual problems, and we measure what changes.
+Website of AlphaMetrics AI, a market research practice in Vienna: brand tracking,
+consumer surveys and decision-ready analytics for brands in Austria and the DACH
+region. Live at [alpha-metrics.ai](https://alpha-metrics.ai).
 
-🌐 **Live site:** [alpha-metrics.ai](https://alpha-metrics.ai)
+The site is static: plain HTML, CSS and JavaScript, no build step, no dependencies.
 
-## About
+## Structure
 
-AlphaMetrics AI delivers AI literacy training directly inside workplaces through four signature formats:
+| Path | What it is |
+|---|---|
+| `index.html` | The single page: services, approach, showcase, standards, about, contact |
+| `css/site.css` | Styles, with validated light and dark colour tokens |
+| `js/charts.js` | The showcase charts (plain DOM, tooltips, table views) |
+| `js/data.js` | Figures for the charts. **Generated**, do not edit by hand |
+| `js/site.js` | Menu, theme toggle, scroll reveal, contact form |
+| `js/theme-init.js` | Restores the saved theme before first paint |
+| `showcase/dashboard.html` | Demo dashboard, German interface. **Generated** |
+| `impressum.html`, `datenschutz.html` | Legal pages (drafts, see below) |
+| `tools/` | Scripts that regenerate `js/data.js` and the demo dashboard |
+| `CNAME`, `.nojekyll`, `robots.txt`, `sitemap.xml`, `404.html` | Hosting files |
 
-- **AI Residency** — 1–4 week on-site embedded engagement
-- **AI Sprint** — 3-week cohort program for teams of 5–15
-- **AI Whisper Program** — 8-week async nudge program
-- **AI Werkstatt** — Half-day industry-specific immersion
+## The showcase is synthetic
 
-## EU AI Act Article 4
+The showcase case study uses **ZINTO, a fictional brand, and synthetic data**. The
+figures were generated and then analysed with the same pipeline that is used for real
+studies, so the page can show the whole workflow without exposing a client. Every
+chart is labelled accordingly. Do not replace these figures with real client results
+without the client's written permission.
 
-Every company in the EU whose employees use AI tools must ensure documented AI literacy. AlphaMetrics AI helps organisations comply with measurable, evidence-based training.
+To regenerate the figures, run the case-study builder of the research pipeline, then:
+
+```
+python3 tools/make_data.py <builder output folder>
+python3 tools/make_demo_dashboard.py <builder output folder>
+```
+
+Both scripts stop with an error if an expected figure or phrase is missing, instead of
+publishing something half right.
+
+## Design notes
+
+- **Charts.** Emphasis charts use one accent against neutral grey. Ordered categories
+  (funnel stages, age bands) use a one-hue ramp. All ramps were checked with the
+  data-visualisation palette validator in light and dark mode, and text and mark
+  contrast was computed, not judged by eye. Every chart has a table view.
+- **Privacy by construction.** No cookies, no analytics, no third-party fonts, scripts or
+  images. A Content-Security-Policy meta tag enforces this; the only allowed outside
+  request is the contact form post to Formspree. System fonts are used throughout.
+- **Accessibility.** Skip link, semantic headings, keyboard-focusable chart marks with
+  the same tooltip as hover, reduced-motion support, light and dark themes.
 
 ## Hosting (GitHub Pages)
 
-The site is a static page served by GitHub Pages from the `main` branch, root folder.
-
-1. Repository **Settings → Pages → Build and deployment**: Source *Deploy from a branch*, Branch `main`, Folder `/ (root)`.
-2. The `CNAME` file keeps the custom domain `alpha-metrics.ai`. Enable *Enforce HTTPS* once the certificate is issued.
+1. Repository **Settings, Pages**: deploy from branch `main`, folder `/ (root)`.
+2. The `CNAME` file keeps the custom domain `alpha-metrics.ai`. Tick *Enforce HTTPS*.
 3. DNS at the domain provider:
-   - Apex `alpha-metrics.ai`: four `A` records `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
+   - Apex `alpha-metrics.ai`: four `A` records `185.199.108.153`, `185.199.109.153`,
+     `185.199.110.153`, `185.199.111.153`.
    - `www`: a `CNAME` record pointing to `arnefloh-wu.github.io`.
 
-## Contact
+## Before the site is promoted
 
-📧 info@alpha-metrics.ai  
-📍 Vienna, Austria
-
-© 2026 AlphaMetrics AI
+- Complete the red fields in `impressum.html` and `datenschutz.html` and have a lawyer
+  review both. Austrian law requires an Impressum on a commercial website.
+- Confirm the data processing agreement with Formspree and name the DNS provider in the
+  privacy notice if it processes visitor data.
+- Read the six rules in the Standards section and confirm that they describe how the
+  company actually works. They are promises to clients.
