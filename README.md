@@ -1,6 +1,6 @@
-# AlphaMetrics AI
+# alpha-metrics.ai
 
-Website of AlphaMetrics AI, a market research practice in Vienna: brand tracking,
+Website of alpha-metrics.ai, a market research practice in Vienna: brand tracking,
 consumer surveys and decision-ready analytics for brands in Austria and the DACH
 region. Live at [alpha-metrics.ai](https://alpha-metrics.ai).
 
@@ -18,7 +18,8 @@ The site is static: plain HTML, CSS and JavaScript, no build step, no dependenci
 | `js/theme-init.js` | Restores the saved theme before first paint |
 | `showcase/dashboard.html` | Demo dashboard, German interface. **Generated** |
 | `impressum.html`, `datenschutz.html` | Legal pages (drafts, see below) |
-| `tools/` | Scripts that regenerate `js/data.js` and the demo dashboard |
+| `assets/logo/` | The logo: wordmark in dark blue, light blue, white and one colour, plus a lockup with the line "Where science meets business". **Generated** |
+| `tools/` | Scripts that regenerate `js/data.js`, the demo dashboard and the logo files (`make_logo.py`) |
 | `CNAME`, `.nojekyll`, `robots.txt`, `sitemap.xml`, `404.html` | Hosting files |
 
 ## The showcase is synthetic

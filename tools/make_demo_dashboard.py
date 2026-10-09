@@ -48,7 +48,7 @@ s, n = re.subn(r'Regionalaussagen ist die Stichprobe zu klein, und die deutsche 
                'Regionalaussagen ist die Stichprobe zu klein.', s)
 assert n == 1, 'table hint not found'
 s, n = re.subn(r'<span>[^<]*Markenstudie ZINTO September 2026</span>',
-               '<span>AlphaMetrics AI \u00b7 Demo mit synthetischen Daten (fiktive Marke ZINTO)</span>', s)
+               '<span>alpha-metrics.ai \u00b7 Demo mit synthetischen Daten (fiktive Marke ZINTO)</span>', s)
 assert n == 1, 'footer not found'
 
 # 3. split head (style) from body, then wrap
@@ -67,12 +67,12 @@ banner_css = """
 """
 banner = ('<header class="am-banner" lang="en"><span><strong>Demo dashboard.</strong> Fictional brand ZINTO, '
           'synthetic data, German interface.</span>'
-          '<a href="../index.html#showcase">Back to AlphaMetrics AI</a></header>\n')
+          '<a href="../index.html#showcase">Back to alpha-metrics.ai</a></header>\n')
 
 doc = ('<!DOCTYPE html>\n<html lang="de">\n<head>\n<meta charset="utf-8">\n'
        '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
        '<meta name="robots" content="noindex,follow">\n'
-       '<title>Demo-Dashboard | AlphaMetrics AI (synthetische Daten)</title>\n'
+       '<title>Demo-Dashboard | alpha-metrics.ai (synthetische Daten)</title>\n'
        + head.strip() + banner_css + '</style>\n</head>\n<body>\n' + banner + '<main>\n' + body.strip() + '\n</main>\n</body>\n</html>\n')
 
 # 4. nothing external may remain

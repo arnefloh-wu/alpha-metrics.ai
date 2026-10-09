@@ -1,4 +1,4 @@
-/* AlphaMetrics AI - market research
+/* alpha-metrics.ai - market research
    Colour tokens are validated: chart ramps with scripts/validate_palette.js
    (ordinal checks, light and dark), text and mark contrast with its
    contrast() helper. No third-party fonts or icon fonts are loaded. */
