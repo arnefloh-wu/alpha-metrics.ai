@@ -1,0 +1,32 @@
+week,date,channel,format,language,pillar,topic,target_keyword,segment,cta,status
+1,2026-10-20,linkedin,text+chart,de,P1,"Ihr Bekanntheitsplus von 3 Punkten hat ein Intervall von ±4: was das für die Budgetentscheidung heißt",,A,follow,planned
+1,2026-10-22,linkedin,text,en,P5,"Why a research firm with a .ai domain will not sell you synthetic respondents",,A/B,follow,planned
+2,2026-10-27,linkedin,text+chart,de,P2,"ZINTO: Nicht die Bekanntheit ist das Problem, sondern die Consideration (fiktive Marke, synthetische Daten)",brand funnel kpis,A,showcase,planned
+2,2026-10-29,linkedin,carousel,de,P1,"6 Regeln, die wir nicht biegen (Standards als Carousel)",,A/B,contact,planned
+3,2026-11-03,site,article,de,P2,"Brand Funnel KPIs: Bekanntheit, Consideration, Kauf richtig lesen",brand funnel kpis,A,contact,planned
+3,2026-11-03,linkedin,text,de,P2,Teaser zum Artikel Brand Funnel KPIs,brand funnel kpis,A,article,planned
+3,2026-11-05,linkedin,text,en,P4,"Austria is not a small Germany: why we never pool DACH samples",,A/C,follow,planned
+4,2026-11-10,site,service-page,de,P2,Brand Tracking (Leistungsseite),brand tracking,A,contact,planned
+4,2026-11-10,linkedin,text+chart,de,P3,"Ein Methodenwechsel ist kein Wachstum: ZINTO 2022 vs 2026",trackingstudie methodenwechsel,A/B,showcase,planned
+4,2026-11-12,linkedin,text,en,P1,"n=30 is a floor, not a target",,B,follow,planned
+5,2026-11-17,sea,launch,de,—,Google Ads S1-S4 live; Microsoft Ads mirror,marktforschung wien,A,contact,planned
+5,2026-11-17,site,article,de,P5,"Synthetische Befragte: Was die Evidenz bisher zeigt",synthetische befragte marktforschung,A/B,newsletter,planned
+5,2026-11-17,linkedin,text,de,P5,Teaser synthetische Befragte,ki in der marktforschung,A/B,article,planned
+5,2026-11-19,linkedin,text,en,P5,"Synthetic respondents: what the evidence says (EN summary)",synthetic respondents validity,B,article,planned
+6,2026-11-24,linkedin,newsletter,de,P1,"Newsletter #1 Was die Stichprobe trägt: Konfidenzintervalle für Marketing-Entscheider",konfidenzintervall umfrage,A,subscribe,planned
+6,2026-11-26,linkedin,document,de,P1,"Lead magnet: 12 Fragen an Ihren Marktforschungs-Dienstleister",marktforschung beauftragen,A/C,download,planned
+7,2026-12-01,linkedin-ads,tla+document,de,P1,Thought Leader Ads (best post) + Document Ad checklist; AT targeting,,A/C,lead form,planned
+7,2026-12-01,site,article,de,P1,"Stichprobengröße für Markenstudien: wie viele Befragte brauchen Sie wirklich?",stichprobengröße berechnen umfrage,A,contact,planned
+7,2026-12-03,linkedin,text,de,P1,"Wrong vs. right: zwei Sätze über dasselbe Ergebnis",,A,follow,planned
+8,2026-12-08,internal,review,—,—,Week-8 review: ads kill/keep; GEO baseline (/geo-monitor); /performance-review,,—,—,planned
+8,2026-12-10,linkedin,text,en,P3,"How to switch survey vendors without losing your trend line",trackingstudie methodenwechsel,B,follow,planned
+9,2026-12-15,site,glossary,de,P1,"Glossar: 10 Begriffe (Konfidenzintervall, Designeffekt, Gewichtung …)",designeffekt gewichtung,B,contact,planned
+9,2026-12-15,linkedin,text,de,P1,"Designeffekt in 150 Wörtern: der Preis der Gewichtung",designeffekt gewichtung,B,glossary,planned
+9,2026-12-17,linkedin,text,de,—,"Pulse #1 angekündigt: Welchen Marken vertrauen Österreicher ihre Daten an?",,A,follow,planned
+10,2026-12-22,linkedin,text,de,—,"Jahresrückblick: drei Dinge, die Marktforschung 2026 gelernt hat (und eines, das sie wieder vergessen sollte)",,all,follow,planned
+11,2026-12-29,—,break,—,—,Holiday break; only comments,,—,—,planned
+12,2027-01-05,site,study-page,de,—,"DACH Brand Pulse #1: Ergebnisse (Studienseite + Tabellen + Dataset-Schema)",,A,download,planned
+12,2027-01-05,pr,press-release,de,—,Pressemitteilung Pulse #1 an Werbeplanung.at / HORIZONT / Leadersnet,,—,—,planned
+12,2027-01-07,linkedin,carousel,de,—,Pulse #1 in 8 Slides,,A,study,planned
+13,2027-01-12,webinar,live,de,—,"Webinar: Pulse #1 und was Markenverantwortliche daraus machen (30 min)",,A/C,register,planned
+13,2027-01-14,linkedin,text,en,—,Pulse #1 EN summary,,B,study,planned

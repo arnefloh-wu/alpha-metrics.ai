@@ -1,0 +1,58 @@
+# Weekly content sprint: Claude drafts next week's LinkedIn posts, articles and ad copy,
+# checks them with the claim-checker agent, and opens a pull request for review.
+# Nothing is published or posted automatically.
+#
+# Setup: add the repository secret ANTHROPIC_API_KEY and allow GitHub Actions to create
+# pull requests (Settings > Actions > General > Workflow permissions).
+# Run this in the private marketing repository (see plan, gate G4), not in the public
+# site repository, because GitHub Pages serves every file on main.
+
+name: Content sprint
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"   # Mondays 05:00 UTC = 06:00 Vienna in winter, 07:00 in summer
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "ISO week, e.g. 2026-W44 (empty = next week)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency:
+  group: content-sprint
+  cancel-in-progress: false
+
+jobs:
+  sprint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run /content-sprint
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: "/content-sprint ${{ github.event.inputs.week }}"
+          claude_args: >-
+            --max-turns 80
+            --allowedTools "Read,Write,Edit,Glob,Grep,Task,Agent,WebSearch,WebFetch,Bash(python3:*),Bash(date:*),Bash(mkdir:*),Bash(ls:*)"
+
+      - name: Open pull request with the drafts
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: content-sprint/${{ github.run_id }}
+          commit-message: "Content sprint drafts"
+          title: "Content sprint: drafts for review"
+          body: |
+            Drafts produced by the weekly content sprint. Start with the README.md in the
+            new week folder under `marketing/drafts/`, then `review.md` (claim-checker).
+            Nothing marked RED may be published.
+          add-paths: |
+            marketing/**
+          labels: content-sprint

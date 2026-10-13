@@ -1,0 +1,30 @@
+cluster,keyword,language,intent,target_page,priority,monthly_volume,notes
+local,marktforschung wien,de,commercial,/de/,1,,validate in Keyword Planner
+local,marktforschungsinstitut wien,de,commercial,/de/,1,,
+local,marktforschungsinstitut österreich,de,commercial,/de/,1,,
+local,marktforschung agentur wien,de,commercial,/de/,2,,
+local,marktforschung beauftragen,de,commercial,/de/,2,,
+local,marktforschung österreich,de,commercial,/de/,2,,often informational; check SERP
+service,brand tracking,de,commercial,/de/leistungen/brand-tracking/,1,,mixed EN/DE term in DACH
+service,brand tracking studie,de,commercial,/de/leistungen/brand-tracking/,1,,
+service,markenbekanntheit messen,de,commercial-info,/de/leistungen/brand-tracking/,1,,
+service,markenfunnel analyse,de,commercial,/de/leistungen/brand-tracking/,2,,
+service,markentracking,de,commercial,/de/leistungen/brand-tracking/,2,,
+service,konsumentenbefragung durchführen lassen,de,commercial,/de/leistungen/fragebogen-programmierung/,2,,
+service,online umfrage agentur,de,commercial,/de/leistungen/fragebogen-programmierung/,2,,risk: survey-taker traffic
+service,fragebogen programmieren lassen,de,commercial,/de/leistungen/fragebogen-programmierung/,3,,
+service,treiberanalyse marktforschung,de,commercial-info,/de/leistungen/treiberanalyse/,2,,
+service,marktforschung dashboard,de,commercial-info,/de/leistungen/dashboards/,3,,
+service,brand tracking agency vienna,en,commercial,/,2,,EN for international firms in Vienna
+info,gestützte ungestützte bekanntheit,de,informational,/de/wissen/gestuetzte-ungestuetzte-bekanntheit/,1,,glossary + article
+info,stichprobengröße berechnen umfrage,de,informational,/de/wissen/stichprobengroesse/,1,,calculator would earn links
+info,konfidenzintervall umfrage,de,informational,/de/wissen/glossar/konfidenzintervall/,2,,
+info,designeffekt gewichtung,de,informational,/de/wissen/glossar/designeffekt/,3,,
+info,brand funnel kpis,de,informational,/de/wissen/brand-funnel-kpis/,1,,
+info,trackingstudie methodenwechsel,de,informational,/de/wissen/methodenwechsel-tracking/,2,,ZINTO P3
+info,awareness consideration purchase funnel,en,informational,/en/insights/brand-funnel/,2,,
+info,how to measure brand awareness,en,informational,/en/insights/measure-brand-awareness/,2,,strong GEO prompt
+ai,synthetische befragte marktforschung,de,informational,/de/wissen/synthetische-befragte/,1,,P5 differentiator
+ai,ki in der marktforschung,de,informational,/de/wissen/ki-marktforschung/,1,,
+ai,synthetic respondents validity,en,informational,/en/insights/synthetic-respondents/,2,,
+ai,llm survey research,en,informational,/en/insights/synthetic-respondents/,3,,

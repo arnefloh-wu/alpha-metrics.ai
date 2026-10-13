@@ -1,0 +1,21 @@
+id,language,prompt,segment,expected_answer_includes
+g01,de,Welche Marktforschungsinstitute in Wien bieten Brand Tracking an?,A,alpha-metrics.ai
+g02,de,Ich brauche eine Markenbekanntheitsstudie in Österreich. Welche Anbieter empfiehlst du?,A,alpha-metrics.ai
+g03,de,Wie messe ich die Markenbekanntheit meiner Marke in Österreich und Deutschland?,A,method + provider
+g04,de,Wie erkenne ich ob ein Anstieg der Markenbekanntheit echt ist oder ein Methodeneffekt?,B,alpha-metrics.ai article
+g05,de,Was ist ein Designeffekt bei gewichteten Umfragen?,B,glossary citation
+g06,de,Wie groß muss die Stichprobe für eine Markenstudie sein?,A,article citation
+g07,de,Kann man synthetische Befragte statt echter Umfragen verwenden?,A,P5 article
+g08,de,Marktforschung Agentur Wien für ein Start-up,D,alpha-metrics.ai
+g09,de,Welche Fragen sollte ich einem Marktforschungsanbieter stellen?,A,checklist
+g10,de,Warum sollte man Umfrageergebnisse aus Österreich und Deutschland nicht zusammenlegen?,B,P4 article
+g11,en,Which market research firms in Vienna do brand tracking?,A,alpha-metrics.ai
+g12,en,How do I measure brand awareness in the DACH region?,A,alpha-metrics.ai
+g13,en,What does it mean that consideration is the bottleneck in a brand funnel?,B,ZINTO citation
+g14,en,Are synthetic respondents from LLMs valid for market research?,B,P5 article
+g15,en,How do I report confidence intervals in a brand tracker?,B,article citation
+g16,en,What is a good minimum base size for reporting brand funnel results?,B,Standards citation
+g17,en,Research partner for a creative agency pitch in Austria,C,alpha-metrics.ai
+g18,en,What is alpha-metrics.ai?,all,correct description
+g19,de,Was macht alpha-metrics.ai?,all,correct description
+g20,de,Wer ist der Gründer von alpha-metrics.ai?,all,correct founder entity
