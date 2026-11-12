@@ -18,8 +18,9 @@ The site is static: plain HTML, CSS and JavaScript, no build step, no dependenci
 | `js/theme-init.js` | Restores the saved theme before first paint |
 | `showcase/dashboard.html` | Demo dashboard, German interface. **Generated** |
 | `impressum.html`, `datenschutz.html` | Legal pages (drafts, see below) |
-| `assets/logo/` | The logo: wordmark in dark blue, light blue, white and one colour, plus a lockup with the line "Where science meets business". **Generated** |
-| `tools/` | Scripts that regenerate `js/data.js`, the demo dashboard and the logo files (`make_logo.py`) |
+| `logo.html` | Logo downloads: every version as SVG and PNG, and the whole kit as a ZIP |
+| `assets/logo/` | The logo: a dark-blue tile with a white alpha next to the wordmark (`alpha-metrics-logo.svg`, `-logo-dark.svg`), the tile alone (`-mark.svg`, `-mark-dark.svg`), the wordmark alone in dark blue, light blue, white and one colour, plus a lockup with the line "Where science meets business". **Generated** |
+| `tools/` | Scripts that regenerate `js/data.js`, the demo dashboard and the logo files (`make_logo.py`, then `make_logo_kit.py` for the PNG exports and the download ZIP on `logo.html`) |
 | `CNAME`, `.nojekyll`, `robots.txt`, `sitemap.xml`, `404.html` | Hosting files |
 
 ## The showcase is synthetic
