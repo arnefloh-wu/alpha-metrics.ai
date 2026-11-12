@@ -403,6 +403,22 @@ p { margin: 0 0 1em; }
   border-radius: 8px; padding: 2px 8px; color: var(--ink); font-weight: 600; white-space: nowrap; }
 .draft-note { padding: 14px 16px; border-radius: 10px; background: var(--tint); border: 1px solid var(--hair); margin-bottom: 28px; color: var(--ink-2); }
 
+/* logo page */
+.kit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 32px; }
+.kit-card { margin: 0; border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; background: var(--card); }
+.kit-swatch { display: flex; align-items: center; justify-content: center; height: 150px; padding: 24px; background: #ffffff; }
+.kit-swatch-dark { background: #121211; }
+.kit-swatch img.kit-wide { width: 100%; max-width: 260px; height: auto; }
+.kit-swatch img.kit-mark { width: 84px; height: 84px; }
+.kit-card figcaption { display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; font-size: .92rem; color: var(--ink-2); }
+.kit-card figcaption strong { color: var(--ink); }
+.kit-links { display: flex; gap: 14px; margin-top: 6px; font-weight: 600; }
+.kit-colours { list-style: none; padding: 0; display: grid; gap: 10px; }
+.kit-colours li { display: flex; align-items: center; gap: 10px; }
+.kit-chip { width: 22px; height: 22px; border-radius: 6px; border: 1px solid var(--hair); flex: none; }
+.kit-chip-blue { background: #104281; } .kit-chip-light { background: #9cc3f3; } .kit-chip-ink { background: #0e1a2b; }
+@media (max-width: 560px) { .kit-grid { grid-template-columns: 1fr; } }
+
 /* reveal */
 .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s, transform .6s; }
 .js .reveal.in { opacity: 1; transform: none; }
