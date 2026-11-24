@@ -17,7 +17,7 @@ The site is static: plain HTML, CSS and JavaScript, no build step, no dependenci
 | `js/site.js` | Menu, theme toggle, scroll reveal, contact form |
 | `js/theme-init.js` | Restores the saved theme before first paint |
 | `showcase/dashboard.html` | Demo dashboard, German interface. **Generated** |
-| `impressum.html`, `datenschutz.html` | Legal pages (drafts, see below) |
+| `impressum.html`, `datenschutz.html` | Legal pages (release review required, see below) |
 | `assets/logo/` | The logo: wordmark in dark blue, light blue, white and one colour, plus a lockup with the line "Where science meets business". **Generated** |
 | `tools/` | Scripts that regenerate `js/data.js`, the demo dashboard and the logo files (`make_logo.py`) |
 | `CNAME`, `.nojekyll`, `robots.txt`, `sitemap.xml`, `404.html` | Hosting files |
@@ -67,9 +67,6 @@ publishing something half right.
 
 - Review and complete the advertising measurement privacy disclosure and verify SDK behavior, consent withdrawal and event delivery before enabling tracking in production.
 
-- Complete the red fields in `impressum.html` and `datenschutz.html` and have a lawyer
-  review both. Austrian law requires an Impressum on a commercial website.
-- Confirm the data processing agreement with Formspree and name the DNS provider in the
-  privacy notice if it processes visitor data.
+- Business details and visitor-facing privacy wording are complete. Review the legal pages and confirm the remaining provider arrangements before activation, as listed in `tools/ad-research/measurement.md`. Retain evidence of contractual arrangements in private company records, not in this public repository.
 - Read the six rules in the Standards section and confirm that they describe how the
   company actually works. They are promises to clients.
