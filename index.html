@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>alpha-metrics.ai | Market research for brands in Austria and the DACH region</title>
   <meta name="description" content="Brand tracking, consumer surveys and AI advertising effectiveness research from Vienna. Decision-ready analytics with quality controls and honest limits.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://bzrcdn.openai.com; style-src 'self'; img-src 'self' data: https://bzr.openai.com; connect-src 'self' https://formspree.io https://bzr.openai.com https://bzrcdn.openai.com; form-action https://formspree.io; base-uri 'self'">
   <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://alpha-metrics.ai/">
@@ -87,6 +87,18 @@
     </div>
   </header>
 
+  <section class="measurement-panel" id="measurement-panel" aria-labelledby="measurement-heading" tabindex="-1" hidden>
+    <div class="wrap measurement-inner">
+      <div>
+        <h2 id="measurement-heading">Optional advertising measurement</h2>
+        <p>With your permission, we use the OpenAI Measurement Pixel to measure visits and successful enquiries from ChatGPT ads. It uses browser identifiers and cookies and may detect and hash supported contact details for matching. This is optional; the site and contact form work without it. You can change your choice at any time. <a href="datenschutz.html#advertising-measurement">Privacy details</a>.</p>
+      </div>
+      <div class="measurement-actions">
+        <button class="btn btn-ghost" id="measurement-decline" type="button">Decline</button>
+        <button class="btn btn-ghost" id="measurement-accept" type="button">Allow measurement</button>
+      </div>
+    </div>
+  </section>
   <main id="main">
     <!-- ================= HERO ================= -->
     <section class="hero" id="top">
@@ -460,6 +472,7 @@
       <nav aria-label="Legal">
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Privacy</a>
+        <button class="measurement-settings" id="measurement-settings" type="button" aria-controls="measurement-panel" aria-expanded="false" hidden>Advertising privacy settings</button>
         <a href="https://www.linkedin.com/company/112210061/" rel="noopener">LinkedIn</a>
       </nav>
     </div>
@@ -469,6 +482,7 @@
   <noscript><p class="wrap small muted">The charts in the showcase need JavaScript. Their figures are also summarised in the text beside each chart.</p></noscript>
   <script src="js/data.js"></script>
   <script src="js/charts.js"></script>
+  <script src="js/ad-measurement.js"></script>
   <script src="js/site.js"></script>
 </body>
 </html>
