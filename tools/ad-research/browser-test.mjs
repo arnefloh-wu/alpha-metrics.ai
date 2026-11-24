@@ -125,6 +125,10 @@ try {
     await page.locator('#verdict .pill').first().waitFor();
     assert.equal(new URL(page.url()).pathname,'/use-cases.html');
     assert.equal(await page.locator('.nav-links a[aria-current="page"]').textContent(),'Use Cases');
+    const scorecard = page.getByRole('tab', {name:'Latin America Market Scorecard'});
+    const funnelTab = page.getByRole('tab', {name:'ZINTO brand funnel'});
+    assert.equal(await scorecard.getAttribute('aria-selected'),'true');
+    assert.equal(await page.locator('#brand-funnel').isVisible(),false);
     if (viewport.width > 860) {
       assert.equal(await page.locator('.nav-links').evaluate(menu => menu.offsetHeight <= 48),true);
     }
@@ -153,8 +157,10 @@ try {
     assert.equal(await page.locator('#bartable tbody tr:visible').count(),6);
     assert.equal(await page.locator('.scorecard').evaluate(node => node.scrollWidth <= node.clientWidth),true);
     assert.equal(await page.getByRole('link', {name:'Request a market research quote'}).getAttribute('href'),'market-research.html#get-a-quote');
-    await page.getByRole('link', {name:'ZINTO brand funnel'}).click();
+    await funnelTab.click();
     assert.equal(new URL(page.url()).hash,'#brand-funnel');
+    assert.equal(await funnelTab.getAttribute('aria-selected'),'true');
+    assert.equal(await page.locator('#market-scorecard').isVisible(),false);
     const funnel = page.locator('#brand-funnel');
     assert.equal(await funnel.locator('.fstage').count(),3);
     assert.equal(await funnel.locator('.fconv').count(),2);
@@ -165,6 +171,17 @@ try {
     await funnel.getByRole('button', {name:'Chart'}).click();
     assert.equal(await funnel.locator('#c-funnel').isVisible(),true);
     assert.equal(await funnel.getByRole('link', {name:'See the full ZINTO brand study'}).getAttribute('href'),'market-research.html#showcase');
+    await funnelTab.press('ArrowLeft');
+    assert.equal(await scorecard.getAttribute('aria-selected'),'true');
+    assert.equal(await funnel.isVisible(),false);
+    assert.equal(await page.locator('#m-t').getAttribute('aria-pressed'),'true');
+    await page.goBack();
+    await funnel.waitFor({state:'visible'});
+    assert.equal(await funnelTab.getAttribute('aria-selected'),'true');
+    await page.reload();
+    await funnel.waitFor({state:'visible'});
+    assert.equal(await funnelTab.getAttribute('aria-selected'),'true');
+    assert.equal(await page.locator('#market-scorecard').isVisible(),false);
     await context.close();
     console.log('PASS mock SDK/form browser acceptance '+viewport.width+'px');
   }

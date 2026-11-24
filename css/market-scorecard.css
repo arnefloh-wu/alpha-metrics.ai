@@ -5,10 +5,40 @@
   padding-block: clamp(36px, 6vw, 68px);
 }
 
-.scorecard > section, .scorecard-hero { display: grid; gap: 14px; min-width: 0; }
+.scorecard > section, .scorecard-panel > section, .scorecard-hero { display: grid; gap: 14px; min-width: 0; }
+.scorecard > .scorecard-panel { gap: clamp(28px, 4vw, 48px); }
+.scorecard > .case-panel[hidden] { display: none; }
 .use-cases-intro { display: grid; gap: 18px; }
-.use-cases-intro .btn { white-space: normal; }
+.case-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  justify-self: start;
+  max-width: 100%;
+  border-bottom: 1px solid var(--hair);
+}
+.case-tabs a {
+  display: grid;
+  place-items: center;
+  padding: 10px clamp(8px, 2vw, 20px);
+  border-bottom: 3px solid transparent;
+  border-radius: 8px 8px 0 0;
+  color: var(--ink-2);
+  font-weight: 600;
+  font-size: .95rem;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+}
+.case-tabs a:hover { background: var(--tint); }
+.case-tabs [aria-selected="true"] {
+  background: var(--tint);
+  border-bottom-color: var(--link);
+  color: var(--link);
+}
 .scorecard-hero { border-top: 1px solid var(--hair); padding-top: 26px; }
+.case-panel[role="tabpanel"].scorecard-hero,
+.case-panel[role="tabpanel"] > .scorecard-hero { border-top: 0; padding-top: 0; }
 .scorecard-hero .btn { justify-self: start; }
 .scorecard p { margin: 0; }
 .scorecard .scorecard-question {
