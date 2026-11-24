@@ -21,15 +21,15 @@ Writes
   assets/logo/alpha-metrics-logo-tagline.svg       tile, wordmark and tagline, for light backgrounds
   assets/logo/alpha-metrics-logo-tagline-dark.svg  the same, for dark backgrounds
   assets/favicon.svg, assets/apple-touch-icon.png, favicon.ico   the tile
-and replaces the logo in the top-left of assets/og-card.png.
+and puts the dark logo with tagline in the top-left of assets/og-card.png.
 
 Usage:
     python3 tools/make_logo.py [bold serif .ttf] [regular sans .ttf]
 
-Defaults are Palatino Linotype Bold and Segoe UI from Windows. Needs fontTools
-and Pillow. If the fonts are not on this machine, the letter outlines are read
-back from the existing SVGs, so the tile and the logo files can still be rebuilt;
-only the social card is left as it is.
+Defaults are Palatino Linotype Bold and Segoe UI from Windows. Needs fontTools,
+Pillow and cairosvg. If the fonts are not on this machine, the letter outlines are read
+back from the existing SVGs, so the tile, the logo files and the social card can
+still be rebuilt. The social card needs cairosvg.
 """
 import os, re, sys
 from fontTools.ttLib import TTFont
@@ -196,25 +196,22 @@ for name, fill, grey, tile_fill, alpha_fill in (
           svg(full_box, '<g transform="translate(%s %s) scale(%s)">%s</g><path fill="%s" d="%s"/><path fill="%s" d="%s"/>'
               % (num(lt_x), num(lt_y), num(LT / 64), mark(tile_fill, alpha_fill), fill, d, grey, td)))
 
-# Social card: keep the layout, redraw the logo in the top-left corner.
-if not HAVE_FONTS:
-    print('wrote logo files; fonts not found, assets/og-card.png left as it is')
+# Social card: keep the layout, put the dark logo with tagline in the top-left corner.
+# The lockup SVG is rasterised directly, so this step needs cairosvg but not the fonts.
+try:
+    import cairosvg
+except ImportError:
+    print('wrote logo files; cairosvg not installed, assets/og-card.png left as it is')
     sys.exit()
+import io
+OG_X, OG_Y, OG_H = 72, 50, 78        # top-left corner and height of the lockup, in pixels
 og = os.path.join(ROOT, 'assets', 'og-card.png')
 img = Image.open(og).convert('RGB')
-dr = ImageDraw.Draw(img)
-dr.rectangle((60, 48, 560, 150), fill=img.getpixel((50, 90)))
-OG_TILE, OG_X = 74, 72 + 74 + 20
-t = tile(OG_TILE)
-img.paste(t, (72, 54), t)
-wm = ImageFont.truetype(SERIF, 46)
-dr.text((OG_X, 82), TEXT, font=wm, fill=BLUE_DARK_BG, anchor='lm')
-width = dr.textlength(TEXT, font=wm)
-tf = ImageFont.truetype(SANS, 15)
-gap = (width - sum(dr.textlength(c, font=tf) for c in TAGLINE)) / (len(TAGLINE) - 1)
-x = float(OG_X)
-for c in TAGLINE:
-    dr.text((x, 124), c, font=tf, fill=GREY_DARK_BG, anchor='ls')
-    x += dr.textlength(c, font=tf) + gap
+ImageDraw.Draw(img).rectangle((60, 40, 640, 150), fill=img.getpixel((50, 90)))
+png = cairosvg.svg2png(url=os.path.join(ROOT, 'assets', 'logo', 'alpha-metrics-logo-tagline-dark.svg'),
+                       output_height=OG_H * 4)
+lock = Image.open(io.BytesIO(png)).convert('RGBA')
+lock = lock.resize((round(lock.width / 4), OG_H), Image.LANCZOS)
+img.paste(lock, (OG_X, OG_Y), lock)
 img.save(og, optimize=True)
-print('wrote logo files')
+print('wrote logo files and the social card')
