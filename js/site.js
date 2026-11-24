@@ -52,7 +52,7 @@
   }
 
   /* ---------- active section in the menu ---------- */
-  var sections = ['services', 'ai-advertising', 'approach', 'showcase', 'standards', 'about', 'contact'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var sections = ['market-research', 'ai-advertising', 'ai-consulting', 'ai-training', 'approach', 'showcase', 'standards', 'about', 'contact'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
   var navA = {};
   Array.prototype.forEach.call(document.querySelectorAll('.nav-links a[href^="#"]'), function (a) { navA[a.getAttribute('href').slice(1)] = a; });
   if ('IntersectionObserver' in window && sections.length) {
@@ -60,7 +60,8 @@
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         Object.keys(navA).forEach(function (k) { navA[k].removeAttribute('aria-current'); });
-        if (navA[en.target.id]) navA[en.target.id].setAttribute('aria-current', 'true');
+        var sectionId = ['approach', 'showcase', 'standards'].indexOf(en.target.id) !== -1 ? 'market-research' : en.target.id;
+        if (navA[sectionId]) navA[sectionId].setAttribute('aria-current', 'true');
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(function (s) { so.observe(s); });
