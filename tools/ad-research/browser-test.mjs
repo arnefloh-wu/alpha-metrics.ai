@@ -122,6 +122,7 @@ try {
     await page.goto(origin);
     if (viewport.width <= 860) await click('menu-btn');
     await page.getByRole('link', {name:'Use Cases'}).click();
+    await page.locator('#verdict .pill').first().waitFor();
     assert.equal(new URL(page.url()).pathname,'/use-cases.html');
     assert.equal(await page.locator('.nav-links a[aria-current="page"]').textContent(),'Use Cases');
     assert.equal(await page.locator('#verdict .pill').count(),6);
@@ -140,6 +141,8 @@ try {
     assert.match(await page.locator('#t-drv').textContent(),/Brazil/);
     await page.locator('#hm td[data-i="0"]').first().press('Enter');
     assert.match(await page.locator('#detail .ctitle').textContent(),/Political stability/);
+    await page.getByText('Show as table').click();
+    assert.equal(await page.locator('#bartable tbody tr:visible').count(),6);
     assert.equal(await page.locator('.scorecard').evaluate(node => node.scrollWidth <= node.clientWidth),true);
     assert.equal(await page.getByRole('link', {name:'Request a market research quote'}).getAttribute('href'),'market-research.html#get-a-quote');
     await context.close();

@@ -62,7 +62,15 @@
 .scorecard .sl .v { text-align: right; }
 
 .scorecard-split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: 16px; }
-.scorecard .card { display: grid; gap: 12px; margin: 0; padding: clamp(12px, 2.4vw, 22px); box-shadow: none; min-width: 0; }
+.scorecard .card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: clamp(12px, 2.4vw, 22px);
+  box-shadow: none;
+  min-width: 0;
+}
 .scorecard .ctitle { font: 600 1.2rem/1.25 var(--serif); }
 .scorecard .csub, .scorecard figcaption { font-size: .88rem; color: var(--ink-3); }
 .scorecard details summary { cursor: pointer; color: var(--link); font-size: .9rem; }
