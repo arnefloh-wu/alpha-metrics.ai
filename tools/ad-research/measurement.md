@@ -1,6 +1,14 @@
 # Advertising measurement release checklist
 
-Do not merge to production until the privacy notice placeholders are resolved and the SDK behavior has been verified. The homepage loads the OpenAI SDK only after an affirmative choice. The public pixel identifier is configured in `js/ad-measurement.js`; no API secrets belong in this repository. Debug is disabled by default.
+The visitor-facing privacy wording is complete. Do not activate production measurement until the remaining provider arrangements and actual SDK behavior have been verified. The homepage loads the OpenAI SDK only after an affirmative choice. The public pixel identifier is configured in `js/ad-measurement.js`; no API secrets belong in this repository. Debug is disabled by default.
+
+## Outstanding release checks
+
+- Confirm the applicable provider terms and international transfer mechanisms for the actual account configurations; retain the evidence privately.
+- Obtain and verify Formspree's applicable Article 28 agreement, sub-processors and submission retention/deletion arrangements. Public SCC information alone does not confirm the agreement.
+- Confirm conversion-data retention criteria with OpenAI if needed, and verify the actual Pixel payload and matching behavior against the notice. Do not equate cookie lifetime with server-side retention.
+- Review the current consumer email service separately; no processor DPA is available for that product. Deferral is not confirmation of compliance.
+- Confirm a practical deletion process for enquiry records in the mailbox and form service. Have the business owner review the final wording and operational safeguards before activation.
 
 ## Browser acceptance tests
 
