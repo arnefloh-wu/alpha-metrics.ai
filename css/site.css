@@ -507,7 +507,7 @@ p { margin: 0 0 1em; }
 .service-outcome h3 { margin: 0 0 8px; }
 .service-outcome p { margin: 0; color: var(--ink-2); max-width: 64ch; }
 #market-research, #ai-advertising, #ai-consulting, #ai-training, #approach, #showcase, #standards, #about, #contact { scroll-margin-top: 78px; }
-@media (max-width: 1080px) and (min-width: 861px) {
+@media (min-width: 861px) {
   .nav-in { gap: 10px; }
   .nav-links { gap: 0; }
   .nav-links a { padding: 9px 7px; font-size: .87rem; white-space: nowrap; }

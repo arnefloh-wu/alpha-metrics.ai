@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Use Cases | alpha-metrics.ai</title>
+  <meta name="description" content="Explore an interactive market entry scorecard for a European premium coffee brand comparing six Latin American markets across 45 indicators.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://bzrcdn.openai.com; style-src 'self'; img-src 'self' data: https://bzr.openai.com; connect-src 'self' https://bzr.openai.com https://bzrcdn.openai.com; form-action 'none'; base-uri 'self'">
+  <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://alpha-metrics.ai/use-cases.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="alpha-metrics.ai">
+  <meta property="og:title" content="Use Cases | alpha-metrics.ai">
+  <meta property="og:description" content="Explore an interactive market entry scorecard for a European premium coffee brand comparing six Latin American markets across 45 indicators.">
+  <meta property="og:url" content="https://alpha-metrics.ai/use-cases.html">
+  <meta property="og:image" content="https://alpha-metrics.ai/assets/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="alpha-metrics.ai: market research">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="js/theme-init.js"></script>
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/market-scorecard.css">
+</head>
+<body>
+  <svg class="sr-only" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="/" aria-label="alpha-metrics.ai, home">
+        <img class="img-light" src="assets/logo/alpha-metrics-logo.svg" alt="alpha-metrics.ai" width="221" height="28"><img class="img-dark" src="assets/logo/alpha-metrics-logo-dark.svg" alt="alpha-metrics.ai" width="221" height="28">
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="market-research.html">Market Research</a></li>
+        <li><a href="ai-advertising.html">AI Advertising</a></li>
+        <li><a href="ai-consulting.html">AI Consulting</a></li>
+        <li><a href="ai-training.html">AI Training</a></li>
+        <li><a href="use-cases.html" aria-current="page">Use Cases</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+      <button class="icon-btn nav-theme" id="theme-btn" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <svg class="icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <svg aria-hidden="true"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <section class="measurement-panel" id="measurement-panel" aria-labelledby="measurement-heading" tabindex="-1" hidden>
+    <div class="wrap measurement-inner">
+      <div>
+        <h2 id="measurement-heading">Optional advertising measurement</h2>
+        <p>With your permission, we use the OpenAI Measurement Pixel to measure visits and successful enquiries and help OpenAI measure and improve advertising services. It uses browser identifiers and cookies and may detect and hash supported contact details for matching. The scorecard works without measurement. You can change your choice at any time. <a href="datenschutz.html#advertising-measurement">Privacy details</a>.</p>
+      </div>
+      <div class="measurement-actions">
+        <button class="btn btn-ghost" id="measurement-decline" type="button">Decline</button>
+        <button class="btn btn-ghost" id="measurement-accept" type="button">Allow measurement</button>
+      </div>
+    </div>
+  </section>
+  <main id="main" class="wrap scorecard">
+    <h1>Use Cases</h1>
+    <div class="scorecard-hero">
+     <p class="eyebrow">Market research case study</p>
+     <h2>Latin America Market Scorecard</h2>
+     <p class="scorecard-question">Which Latin American market should a European premium coffee brand enter first?</p>
+     <p class="lede">We ranked six markets on 45 public indicators across the six PESTEL dimensions. Change the weights or the normalisation below and the ranking is recalculated from the raw data.</p>
+     <a class="btn btn-primary" href="#h-model">Explore the live scorecard <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+     <div class="pills" id="verdict" aria-live="polite"></div>
+    </div>
+
+    <section aria-labelledby="h-method">
+     <h3 id="h-method">One weighted score, built in five steps</h3>
+     <div class="scorecard-steps">
+      <div class="step"><span class="n">Step 1</span><h4>Collect</h4><p>45 indicators per country: 5 political, 10 economic, 10 social, 10 technological, 5 environmental, 5 legal. Latest year, one public source each.</p></div>
+      <div class="step"><span class="n">Step 2</span><h4>Normalise</h4><p>Min-max: <code>100·(x−min)/(max−min)</code>, reversed where lower is better. Checked against T-scores: <code>50+10·z</code>.</p></div>
+      <div class="step"><span class="n">Step 3</span><h4>Weight</h4><p>One weight per dimension, fixed before the data were collected and split equally among its indicators.</p></div>
+      <div class="step"><span class="n">Step 4</span><h4>Aggregate</h4><p>Score = <code>Σ weight × dimension mean</code>. A weighted sum, so a strength can offset a weakness.</p></div>
+      <div class="step"><span class="n">Step 5</span><h4>Stress-test</h4><p>Re-rank under four alternative weight sets and with T-scores. A rank that holds is a result you can decide on.</p></div>
+     </div>
+    </section>
+
+    <section aria-labelledby="h-model">
+     <noscript><p>Enable JavaScript to change weights and compare market rankings.</p></noscript>
+     <h3 id="h-model">Live model</h3>
+     <div class="controls">
+      <div class="row"><span class="lbl">Weight set</span><span id="presets" class="row"></span></div>
+      <div class="sliders" id="sliders"></div>
+      <div class="row"><span class="lbl">Normalisation</span>
+       <button class="seg" id="m-mm" aria-pressed="true">Min-max, 0–100</button>
+       <button class="seg" id="m-t" aria-pressed="false">T-score, 50 = average</button>
+      </div>
+     </div>
+     <div class="scorecard-split">
+      <figure class="card">
+       <div><div class="ctitle" id="t-bars"></div><div class="csub" id="s-bars"></div></div>
+       <div class="scorecard-chart" id="bars"></div>
+       <details><summary>Show as table</summary><div class="tw"><table id="bartable"></table></div></details>
+       <figcaption>Base: six markets, 45 indicators each. Select a bar to see that country’s breakdown.</figcaption>
+      </figure>
+      <figure class="card">
+       <div><div class="ctitle" id="t-drv"></div><div class="csub" id="s-drv"></div></div>
+       <div class="scorecard-chart" id="drivers"></div>
+       <figcaption id="c-drv"></figcaption>
+      </figure>
+     </div>
+    </section>
+
+    <section aria-labelledby="h-rob">
+     <h3 id="h-rob">Ranking across weight sets</h3>
+     <p class="note">Rank of each country under the five fixed weight sets, and under your weights if you changed them, with the current normalisation. A narrow range means the result does not depend on one choice of weights.</p>
+     <div class="card tw"><table id="rob"></table></div>
+    </section>
+
+    <section aria-labelledby="h-ind">
+     <h3 id="h-ind">The 45 indicators behind the score</h3>
+     <p class="note">Normalised score per indicator and country. Higher scores indicate more favourable values within the six markets. Select an indicator to see its raw values and where min-max and T-scores disagree.</p>
+     <div class="scorecard-split">
+      <div class="card tw"><table class="hm" id="hm"></table></div>
+      <div class="card" id="detail"></div>
+     </div>
+    </section>
+
+    <section aria-labelledby="h-use">
+     <h3 id="h-use">What the method can and cannot carry</h3>
+     <div class="card">
+      <p>The model works for any screening that compares a fixed set of markets on many indicators. Swap the indicators, set the weights before you look at the data, and report the rank range rather than a single rank.</p>
+      <p><strong>Limits.</strong> With six countries, min-max stretches small gaps, and one outlier (Mexico’s tourist arrivals, Brazil’s coffee market) can push the others towards zero. A weighted sum lets a large market offset weak institutions, so knock-out conditions such as a prohibitive tariff need a separate filter. Some indicators are proxies, and data years range from 2015 to 2026.</p>
+     </div>
+    </section>
+    <p class="note scorecard-source">Data: public sources (World Bank WDI, WGI and LPI, UN agencies, OECD, Transparency International, WIPO, Yale EPI, ND-GAIN, EU Access2Markets, Euromonitor and Statista via a university library, among others), collected by student groups in the course International Business Projects, WU Vienna, winter term 2026/27. Status November 2026. Scores compare the six markets with each other; they are not forecasts.</p>
+    <aside class="service-outcome" aria-labelledby="case-contact">
+      <div>
+        <h3 id="case-contact">Which market are you considering?</h3>
+        <p>Tell us which markets you want to compare and what matters for your decision.</p>
+      </div>
+      <a class="btn btn-ghost" href="market-research.html#get-a-quote">Request a market research quote</a>
+    </aside>
+    <div class="tip" id="tip" hidden></div>
+  </main>
+  <footer class="footer">
+    <div class="wrap footer-in">
+      <span>&copy; 2026 alpha-metrics.ai, Vienna</span>
+      <nav aria-label="Legal">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Privacy</a>
+        <a href="logo.html">Logo</a>
+        <button class="measurement-settings" id="measurement-settings" type="button" aria-controls="measurement-panel" aria-expanded="false" hidden>Advertising privacy settings</button>
+        <a href="https://www.linkedin.com/company/112210061/" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
+  <script src="js/ad-measurement.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/market-scorecard.js"></script>
+</body>
+</html>
