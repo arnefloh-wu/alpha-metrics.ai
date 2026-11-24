@@ -24,6 +24,8 @@ KIT = os.path.join(LOGO, 'alpha-metrics-logo-kit.zip')
 EXPORTS = [
     ('alpha-metrics-logo', (600, 1200, 2400)),
     ('alpha-metrics-logo-dark', (600, 1200, 2400)),
+    ('alpha-metrics-logo-tagline', (600, 1200, 2400)),
+    ('alpha-metrics-logo-tagline-dark', (600, 1200, 2400)),
     ('alpha-metrics-mark', (256, 512, 1024)),
     ('alpha-metrics-mark-dark', (256, 512, 1024)),
     ('alpha-metrics', (600, 1200, 2400)),
@@ -40,6 +42,8 @@ GUIDE = """alpha-metrics.ai logo kit
 Files
   alpha-metrics-logo         tile and wordmark, for light backgrounds
   alpha-metrics-logo-dark    tile and wordmark, for dark backgrounds
+  alpha-metrics-logo-tagline       tile, wordmark and tagline, for light backgrounds
+  alpha-metrics-logo-tagline-dark  the same, for dark backgrounds
   alpha-metrics-mark         tile alone (profile pictures, app icons)
   alpha-metrics-mark-dark    tile alone, for dark backgrounds
   alpha-metrics              wordmark alone, dark blue

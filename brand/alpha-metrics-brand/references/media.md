@@ -31,7 +31,7 @@ Build with `am.docx_new()`; restyle existing ones with `am.docx_apply(doc)`.
 - Tables: no vertical lines; bold header with a dark rule underneath; hairlines between rows; numbers right
   aligned; a caption line with base and source below (`am.docx_table(..., note=...)`).
 - Charts at full text width (16 cm), PNG at 220 dpi from `use_matplotlib()`.
-- Cover page for longer reports: tagline logo, title, subtitle, client name, date; plenty of white space.
+- Cover page for longer reports: the logo with tagline (`am.logo("logo-tagline")`), title, subtitle, client name, date; plenty of white space.
 - Letters: `am.docx_letter(...)` — logo top left, sender block small and grey top right, recipient, date,
   subject in bold, body, signature. Keep to one page.
 - PDF delivery: convert from Word; check that fonts embedded (Palatino Linotype, Segoe UI).
@@ -69,7 +69,7 @@ Build with `am.docx_new()`; restyle existing ones with `am.docx_apply(doc)`.
 - LinkedIn post image 1200 × 1200 or 1200 × 627: page or navy background, serif headline (the number or
   finding), one simple chart in the house style, mark bottom right, base line in small grey.
 - Profile picture: `alpha-metrics-mark-512.png`.
-- Banner (1584 × 396): navy, dark tagline logo left, plenty of space.
+- Banner (1584 × 396): navy, `alpha-metrics-logo-tagline-dark` on the left, plenty of space.
 
 ## Email signature
 
