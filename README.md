@@ -22,6 +22,10 @@ The site is static: plain HTML, CSS and JavaScript, no build step, no dependenci
 | `tools/` | Scripts that regenerate `js/data.js`, the demo dashboard and the logo files (`make_logo.py`) |
 | `CNAME`, `.nojekyll`, `robots.txt`, `sitemap.xml`, `404.html` | Hosting files |
 
+## AI advertising research
+
+The homepage includes an independent AI advertising effectiveness service. The reusable aggregate-reporting research toolkit is documented in [`tools/ad-research/README.md`](tools/ad-research/README.md). Its example is entirely synthetic; never commit real client exports or unpublished campaign information to this public repository.
+
 ## The showcase is synthetic
 
 The showcase case study uses **ZINTO, a fictional brand, and synthetic data**. The
