@@ -134,12 +134,14 @@ try {
     await page.getByRole('button', {name:'Access-led'}).click();
     assert.notEqual(await page.locator('#verdict').textContent(),baseline);
     assert.equal(await page.locator('#w-LE').inputValue(),'40');
+    const presetScores = await page.locator('#verdict').textContent();
     await page.getByRole('slider', {name:'Legal'}).evaluate(slider => {
       slider.value = '0';
       slider.dispatchEvent(new Event('input', {bubbles:true}));
     });
-    assert.equal(await page.locator('#rob').getByRole('columnheader', {name:'Your weights'}).count(),1);
+    assert.ok((await page.locator('#rob thead th').allTextContents()).includes('Your weights'));
     const minMax = await page.locator('#verdict').textContent();
+    assert.notEqual(minMax,presetScores);
     await click('m-t');
     assert.equal(await page.locator('#m-t').getAttribute('aria-pressed'),'true');
     assert.notEqual(await page.locator('#verdict').textContent(),minMax);

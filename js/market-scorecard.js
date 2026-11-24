@@ -286,7 +286,7 @@
   }
   function drawTable(r, order) {
     $("bartable").innerHTML =
-      `<thead><tr><th class="num">Rank</th><th>Country</th>${DIMS.map((d) => `<th class="num">${d[1]}</th>`).join("")}<th class="num">Total</th></tr></thead><tbody>` +
+      `<thead><tr><th scope="col" class="num">Rank</th><th scope="col">Country</th>${DIMS.map((d) => `<th scope="col" class="num">${d[1]}</th>`).join("")}<th scope="col" class="num">Total</th></tr></thead><tbody>` +
       order
         .map(
           (c) =>
@@ -312,7 +312,7 @@
         ? `. ${stable.join(" and ")} never move${stable.length === 1 ? "s" : ""}`
         : "");
     $("rob").innerHTML =
-      `<thead><tr><th>Country</th>${cols.map(([k]) => `<th class="num">${esc(k)}</th>`).join("")}<th class="num">Rank range</th></tr></thead><tbody>` +
+      `<thead><tr><th scope="col">Country</th>${cols.map(([k]) => `<th scope="col" class="num">${esc(k)}</th>`).join("")}<th scope="col" class="num">Rank range</th></tr></thead><tbody>` +
       ord0
         .map((c) => {
           const rs = cols.map((x) => x[1][c]),
@@ -336,7 +336,7 @@
             : "ramp-1";
   };
   function drawHeat(r) {
-    let h = `<thead><tr><th></th><th></th>${COUNTRIES.map((c) => `<th>${c.slice(0, 3).toUpperCase()}</th>`).join("")}</tr></thead><tbody>`,
+    let h = `<thead><tr><th scope="col"></th><th scope="col"></th>${COUNTRIES.map((c) => `<th scope="col">${c.slice(0, 3).toUpperCase()}</th>`).join("")}</tr></thead><tbody>`,
       prev = "";
     INDICATORS.forEach(([id, n], i) => {
       const g = id.slice(0, 2);
@@ -411,7 +411,7 @@
     s += `<text x="${L}" y="${y + 44}">${esc(fmt(mn))}</text><text x="${w - R}" y="${y + 44}" text-anchor="end">${esc(fmt(mx))}</text></svg>`;
     $("detail").innerHTML =
       `<div class="kicker">${id} · ${DIMS.find((d) => id.startsWith(d[0]))[1]}</div><div class="ctitle">${esc(nm)}</div><div class="csub">${esc(u)} · ${dir === "L" ? "lower is better" : "higher is better"} · best value in blue</div>${s}
-   <div class="tw"><table><thead><tr><th>Country</th><th class="num">Value</th><th class="num">Min-max</th><th class="num">T-score</th></tr></thead><tbody>${COUNTRIES.map((c, i) => `<tr><td>${c}</td><td class="num">${fmt(v[i])}</td><td class="num">${r.norm[selectedIndicator].mm[i].toFixed(0)}</td><td class="num">${r.norm[selectedIndicator].t[i].toFixed(0)}</td></tr>`).join("")}</tbody></table></div>
+   <div class="tw"><table><thead><tr><th scope="col">Country</th><th scope="col" class="num">Value</th><th scope="col" class="num">Min-max</th><th scope="col" class="num">T-score</th></tr></thead><tbody>${COUNTRIES.map((c, i) => `<tr><td>${c}</td><td class="num">${fmt(v[i])}</td><td class="num">${r.norm[selectedIndicator].mm[i].toFixed(0)}</td><td class="num">${r.norm[selectedIndicator].t[i].toFixed(0)}</td></tr>`).join("")}</tbody></table></div>
    <p class="note">Min-max puts the weakest of the six at 0 and the best at 100, however small the gap. T-scores keep the real distances: 50 is the average, 60 is one standard deviation better.</p>`;
   }
   let rt;
