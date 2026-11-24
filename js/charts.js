@@ -269,7 +269,7 @@
   function ciCell(o, d) { return o.lo == null ? '' : o.lo.toFixed(d == null ? 1 : d) + '–' + o.hi.toFixed(d == null ? 1 : d); }
 
   var aw = awareness();
-  addTable('t-awareness', 'Aided awareness by brand, Austria (synthetic data)', ['Brand', 'Aware, %', '95% CI', 'Aware (n)'],
+  if (aw) addTable('t-awareness', 'Aided awareness by brand, Austria (synthetic data)', ['Brand', 'Aware, %', '95% CI', 'Aware (n)'],
     aw.map(function (a) { return [a.label, a.value.toFixed(1), ciCell(a), a.n]; }), [aw.findIndex(function (a) { return a.hero; })]);
 
   funnel(document.getElementById('c-funnel'), false);
@@ -279,15 +279,15 @@
       .concat(D.funnel.conv.map(function (c) { return [c.label + ' (' + D.hero + ' / category median of ' + c.brands + ' brands)', c.value.toFixed(1) + ' / ' + c.median.toFixed(1), '']; })));
 
   var wi = who();
-  addTable('t-who', 'Aided awareness of ' + D.hero + ' by group, Austria (synthetic data)', ['Group', 'Aware, %', '95% CI', 'Respondents (n)'],
+  if (wi) addTable('t-who', 'Aided awareness of ' + D.hero + ' by group, Austria (synthetic data)', ['Group', 'Aware, %', '95% CI', 'Respondents (n)'],
     wi.map(function (a) { return [a.group + ': ' + a.label, a.value.toFixed(1), ciCell(a), a.n]; }));
 
   var chs = channels();
-  addTable('t-channels', 'Where aware respondents noticed ' + D.hero + ', Austria (synthetic data)', ['Channel', 'Share, %', '95% CI', 'Respondents (n)'],
+  if (chs) addTable('t-channels', 'Where aware respondents noticed ' + D.hero + ', Austria (synthetic data)', ['Channel', 'Share, %', '95% CI', 'Respondents (n)'],
     chs.map(function (a) { return [a.label, a.value.toFixed(1), ciCell(a), a.n]; }));
 
   var ch = change();
-  addTable('t-change', 'Aided awareness 2022 and 2026, Austria (synthetic data)', ['Brand', '2022, %', '2026, %', 'Change, pp', '95% CI, pp'],
+  if (ch) addTable('t-change', 'Aided awareness 2022 and 2026, Austria (synthetic data)', ['Brand', '2022, %', '2026, %', 'Change, pp', '95% CI, pp'],
     ch.map(function (a) { return [a.label, a.w2022.toFixed(1), a.w2026.toFixed(1), signed(a.value), ciCell(a)]; }), [ch.findIndex(function (a) { return a.hero; })]);
 
   Array.prototype.forEach.call(document.querySelectorAll('.chart'), wireSwitch);

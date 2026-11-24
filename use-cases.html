@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Use Cases | alpha-metrics.ai</title>
-  <meta name="description" content="Explore an interactive market entry scorecard for a European premium coffee brand comparing six Latin American markets across 45 indicators.">
+  <meta name="description" content="Explore two market research examples from alpha-metrics.ai: a Latin America market entry scorecard and an Austrian brand funnel from awareness to purchase.">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://bzrcdn.openai.com; style-src 'self'; img-src 'self' data: https://bzr.openai.com; connect-src 'self' https://bzr.openai.com https://bzrcdn.openai.com; form-action 'none'; base-uri 'self'">
   <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="alpha-metrics.ai">
   <meta property="og:title" content="Use Cases | alpha-metrics.ai">
-  <meta property="og:description" content="Explore an interactive market entry scorecard for a European premium coffee brand comparing six Latin American markets across 45 indicators.">
+  <meta property="og:description" content="Explore two market research examples from alpha-metrics.ai: a Latin America market entry scorecard and an Austrian brand funnel from awareness to purchase.">
   <meta property="og:url" content="https://alpha-metrics.ai/use-cases.html">
   <meta property="og:image" content="https://alpha-metrics.ai/assets/og-card.png">
   <meta property="og:image:width" content="1200">
@@ -75,8 +75,14 @@
     </div>
   </section>
   <main id="main" class="wrap scorecard">
-    <h1>Use Cases</h1>
-    <div class="scorecard-hero">
+    <div class="use-cases-intro">
+      <h1>Use Cases</h1>
+      <nav class="row" aria-label="Jump to a use case">
+        <a class="btn btn-ghost" href="#market-scorecard">Latin America Market Scorecard</a>
+        <a class="btn btn-ghost" href="#brand-funnel">ZINTO brand funnel</a>
+      </nav>
+    </div>
+    <div class="scorecard-hero" id="market-scorecard">
      <p class="eyebrow">Market research case study</p>
      <h2>Latin America Market Scorecard</h2>
      <p class="scorecard-question">Which Latin American market should a European premium coffee brand enter first?</p>
@@ -145,10 +151,34 @@
      </div>
     </section>
     <p class="note scorecard-source">Data: public sources (World Bank WDI, WGI and LPI, UN agencies, OECD, Transparency International, WIPO, Yale EPI, ND-GAIN, EU Access2Markets, Euromonitor and Statista via a university library, among others), collected by student groups in the course International Business Projects, WU Vienna, winter term 2026/27. Status November 2026. Scores compare the six markets with each other; they are not forecasts.</p>
+    <section class="scorecard-hero brand-funnel" id="brand-funnel" aria-labelledby="h-brand-funnel">
+      <p class="eyebrow">Market research case study</p>
+      <h2 id="h-brand-funnel">ZINTO brand funnel</h2>
+      <p class="lede">Where does a snack bar brand lose people between awareness and purchase? This Austrian example compares ZINTO with the category at each step.</p>
+      <p class="note"><strong>Fictional brand, synthetic data.</strong></p>
+      <section class="chart" aria-labelledby="h-fu">
+        <div class="chart-head">
+          <div>
+            <h3 id="h-fu">From awareness to purchase</h3>
+            <p>Stage sizes show the share of all respondents. Conversion rates use the previous stage as the base. The category median includes brands with at least 30 aware respondents.</p>
+          </div>
+          <div class="seg" role="group" aria-label="Funnel view">
+            <button type="button" data-show="chart" aria-pressed="true">Chart</button>
+            <button type="button" data-show="table" aria-pressed="false">Table</button>
+          </div>
+        </div>
+        <div data-view="chart" id="c-funnel"></div>
+        <div data-view="table" class="tview" id="t-funnel" hidden></div>
+        <p class="chart-foot">Base: <span data-bind="net"></span> respondents in Austria after quality checks. Stage shares are weighted.</p>
+        <p class="chart-foot">The largest gap is at consideration. Of those who knew ZINTO, <b data-bind="conv1"></b> would consider it, compared with a category median of <b data-bind="med1"></b>. Among those who would consider it, <b data-bind="conv2"></b> had bought it in the last three months, compared with <b data-bind="med2"></b> for the category.</p>
+      </section>
+      <noscript><p>Enable JavaScript to see the chart and table.</p></noscript>
+      <p><a href="market-research.html#showcase">See the full ZINTO brand study</a></p>
+    </section>
     <aside class="service-outcome" aria-labelledby="case-contact">
       <div>
-        <h3 id="case-contact">Which market are you considering?</h3>
-        <p>Tell us which markets you want to compare and what matters for your decision.</p>
+        <h3 id="case-contact">What decision could research help you make?</h3>
+        <p>Tell us which markets you want to compare or where you want to understand your brand’s performance.</p>
       </div>
       <a class="btn btn-ghost" href="market-research.html#get-a-quote">Request a market research quote</a>
     </aside>
@@ -166,7 +196,10 @@
       </nav>
     </div>
   </footer>
+  <div class="tt" id="tt" role="tooltip" hidden></div>
   <script src="js/ad-measurement.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
   <script src="js/site.js"></script>
   <script src="js/market-scorecard.js"></script>
 </body>
