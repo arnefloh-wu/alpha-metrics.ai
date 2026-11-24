@@ -153,6 +153,18 @@ try {
     assert.equal(await page.locator('#bartable tbody tr:visible').count(),6);
     assert.equal(await page.locator('.scorecard').evaluate(node => node.scrollWidth <= node.clientWidth),true);
     assert.equal(await page.getByRole('link', {name:'Request a market research quote'}).getAttribute('href'),'market-research.html#get-a-quote');
+    await page.getByRole('link', {name:'ZINTO brand funnel'}).click();
+    assert.equal(new URL(page.url()).hash,'#brand-funnel');
+    const funnel = page.locator('#brand-funnel');
+    assert.equal(await funnel.locator('.fstage').count(),3);
+    assert.equal(await funnel.locator('.fconv').count(),2);
+    await funnel.getByRole('button', {name:'Table'}).click();
+    assert.equal(await funnel.locator('#t-funnel tbody tr:visible').count(),5);
+    assert.equal(await funnel.locator('#c-funnel').isVisible(),false);
+    assert.equal(await funnel.evaluate(node => node.scrollWidth <= node.clientWidth),true);
+    await funnel.getByRole('button', {name:'Chart'}).click();
+    assert.equal(await funnel.locator('#c-funnel').isVisible(),true);
+    assert.equal(await funnel.getByRole('link', {name:'See the full ZINTO brand study'}).getAttribute('href'),'market-research.html#showcase');
     await context.close();
     console.log('PASS mock SDK/form browser acceptance '+viewport.width+'px');
   }
