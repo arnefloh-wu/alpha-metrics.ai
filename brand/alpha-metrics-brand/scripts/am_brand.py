@@ -2,11 +2,14 @@
 
 Import it from anywhere:
 
-    import sys; sys.path.insert(0, "<skill folder>/scripts")
+    import sys; sys.dont_write_bytecode = True     # keep the skill folder clean
+    sys.path.insert(0, "<skill folder>/scripts")
     import am_brand as am
 
-Charts      am.use_matplotlib(), am.source(ax, "..."), am.plotly_template()
+Charts      am.use_matplotlib(), am.title(ax, ...), am.source(ax, "..."), am.err_kw(),
+            am.plotly_template()
 Word        doc = am.docx_new(); am.docx_table(doc, rows); doc.save(...)
+            doc = am.docx_letter(recipient, subject, paragraphs, ...) for letters
             am.docx_apply(existing_doc) restyles a document you already have
 PowerPoint  prs = am.pptx_new(); am.slide_title(prs, ...); am.slide_content(...)
             am.slide_chart(...), am.slide_kpis(...), am.slide_section(...),
@@ -69,7 +72,7 @@ def use_matplotlib(dark=False, background=None):
     mpl.rcParams.update({
         "font.family": "sans-serif",
         "font.sans-serif": [SANS, "Inter", "Helvetica Neue", "Arial", "DejaVu Sans"],
-        "font.serif": [SERIF, "Palatino", "Book Antiqua", "Georgia", "DejaVu Serif"],
+        "font.serif": [SERIF, "Palatino", "Book Antiqua", "TeX Gyre Pagella", "Gelasio", "Georgia", "DejaVu Serif"],
         "font.size": 10.5,
         "text.color": t["ink"],
         "axes.labelcolor": t["ink_2"],
@@ -94,10 +97,16 @@ def use_matplotlib(dark=False, background=None):
     return t
 
 
-def title(ax, text, subtitle=None):
-    """Serif chart title that states the finding, with an optional grey subtitle."""
+def title(ax, text=None, subtitle=None):
+    """Serif chart title that states the finding, with an optional grey subtitle.
+    On a slide whose headline already states the finding, pass text=None: only the
+    measure line (subtitle) is drawn."""
     import matplotlib as mpl
     ax.set_title("")
+    if subtitle and not text:
+        ax.text(0, 1.04, subtitle, transform=ax.transAxes, ha="left", va="bottom",
+                fontsize=10, color=mpl.rcParams["xtick.color"])
+        return
     ax.text(0, 1.12 if subtitle else 1.05, text, transform=ax.transAxes, ha="left", va="bottom",
             fontsize=15, fontweight="bold", family="serif", color=mpl.rcParams["text.color"])
     if subtitle:
@@ -110,6 +119,13 @@ def source(ax, text):
     import matplotlib as mpl
     ax.annotate(text, xy=(0, 0), xycoords="axes fraction", xytext=(0, -34), textcoords="offset points",
                 ha="left", va="top", fontsize=8.5, color=mpl.rcParams["xtick.color"])
+
+
+def err_kw(dark=False):
+    """Error-bar styling that stays visible on grey and blue bars: pass as error_kw=am.err_kw()
+    to bar/barh, or **am.err_kw() to errorbar()."""
+    t = D if dark else C
+    return {"ecolor": t["ink"], "elinewidth": 1.1, "capsize": 0}
 
 
 def plotly_template(dark=False, register=True):
@@ -204,6 +220,11 @@ def docx_apply(doc, header_logo=True, footer_text=None):
             ppr = s.element.get_or_add_pPr()
             for b in ppr.findall('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}pBdr'):
                 ppr.remove(b)
+    for name in ("Header", "Footer"):
+        try:
+            _font(st[name], SANS, 8, C["ink_3"])
+        except KeyError:
+            pass
     for name in ("Caption", "Quote", "Intense Quote", "List Bullet", "List Number"):
         try:
             _font(st[name], SANS, 9 if name == "Caption" else 10.5, C["ink_3"] if name == "Caption" else C["ink"],
@@ -222,8 +243,12 @@ def docx_apply(doc, header_logo=True, footer_text=None):
                 hp.add_run().add_picture(str(logo("logo")), height=Cm(0.6))
         fp = sec.footer.paragraphs[0]
         if not fp.runs:
+            from docx.enum.text import WD_TAB_ALIGNMENT
             fp.alignment = WD_ALIGN_PARAGRAPH.LEFT
-            r = fp.add_run((footer_text or "%s  ·  %s  ·  %s" % (NAME, CONTACT["city"], CONTACT["email"])) + "\t\t")
+            text_w = sec.page_width - sec.left_margin - sec.right_margin
+            st["Footer"].paragraph_format.tab_stops.clear_all()   # drop Word's default centre/right tabs
+            fp.paragraph_format.tab_stops.add_tab_stop(text_w, WD_TAB_ALIGNMENT.RIGHT)
+            r = fp.add_run((footer_text or "%s  ·  %s  ·  %s" % (NAME, CONTACT["city"], CONTACT["email"])) + "\t")
             r.font.size = Pt(8); r.font.color.rgb = _rgb(C["ink_3"])
             pr = _page_field(fp); pr.font.size = Pt(8); pr.font.color.rgb = _rgb(C["ink_3"])
     return doc
@@ -237,6 +262,37 @@ def docx_new(title=None, subtitle=None, **kw):
         doc.add_paragraph(title, style="Title")
     if subtitle:
         doc.add_paragraph(subtitle, style="Subtitle")
+    return doc
+
+
+def docx_letter(recipient, subject, paragraphs, date=None, salutation="Dear Sir or Madam,",
+                closing="Kind regards,", signer="Arne Floh", signer_title="alpha-metrics.ai", sender=None):
+    """A one-page house-style letter: logo header, grey sender block right, recipient, date,
+    bold subject, body, signature. recipient / sender: lists of lines. Returns the Document;
+    add tables or more paragraphs before saving if needed."""
+    import datetime
+    from docx.shared import Pt
+    from docx.enum.text import WD_ALIGN_PARAGRAPH
+    doc = docx_new()
+    sender = sender or [NAME, "Vienna, Austria", CONTACT["email"], CONTACT["web"].replace("https://", "")]
+    p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+    for i, line in enumerate(sender):
+        r = p.add_run(line + ("\n" if i < len(sender) - 1 else "")); r.font.size = Pt(8.5); r.font.color.rgb = _rgb(C["ink_3"])
+    p.paragraph_format.space_after = Pt(18)
+    p = doc.add_paragraph("\n".join(recipient)); p.paragraph_format.space_after = Pt(18)
+    today = datetime.date.today()
+    d = date or "%d %s" % (today.day, today.strftime("%B %Y"))   # 12 November 2026
+    p = doc.add_paragraph(d); p.alignment = WD_ALIGN_PARAGRAPH.RIGHT; p.paragraph_format.space_after = Pt(14)
+    p = doc.add_paragraph(); r = p.add_run(subject); r.bold = True; r.font.color.rgb = _rgb(C["ink"])
+    p.paragraph_format.space_after = Pt(12)
+    if salutation:
+        doc.add_paragraph(salutation)
+    for para in paragraphs:
+        doc.add_paragraph(para)
+    p = doc.add_paragraph(closing); p.paragraph_format.space_before = Pt(10); p.paragraph_format.space_after = Pt(28)
+    p = doc.add_paragraph(); r = p.add_run(signer); r.bold = True
+    if signer_title:
+        r2 = p.add_run("\n" + signer_title); r2.font.color.rgb = _rgb(C["ink_3"])
     return doc
 
 
@@ -284,6 +340,10 @@ def docx_table(doc, rows, header=True, num_cols=(), widths_cm=None, note=None):
                 border(cell, "bottom", C["hair"], 4)
             if widths_cm:
                 cell.width = Cm(widths_cm[j])
+    if widths_cm:                      # Word and LibreOffice only honour widths with autofit off
+        t.autofit = False
+        for j, w in enumerate(widths_cm):
+            t.columns[j].width = Cm(w)
     if note:
         p = doc.add_paragraph(note, style="Caption")
     return t

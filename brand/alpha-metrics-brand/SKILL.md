@@ -86,24 +86,34 @@ deliberately uses system fonts.
    The subtitle says exactly what is measured and in what unit.
 2. **Highlight one thing**: the focal brand/series in highlight blue `#2a78d6`, everything else context grey.
    Use `am.focus(labels, "ZINTO")`. For ordered categories use the blue ramp (`am.palette(n)`).
-3. **Show uncertainty**: confidence intervals as thin grey error bars or a light band; state the level (95%).
-4. **Always a base line** under the chart: `Base: all respondents, Austria, n = 1,003. Source: …` (`am.source`).
-5. Minimal ink: no top/right/left spines, light gridlines on the value axis only, no 3D, no pie charts with
+3. **Show uncertainty**: confidence intervals as thin dark error bars (`error_kw=am.err_kw()`) or a light
+   band; state the level (95%).
+4. **Always a base line**: `Base: all respondents, Austria, n = 1,003. Source: …`. Put it in exactly one
+   place: inside the PNG with `am.source` for standalone images and documents without captions; in the
+   slide's source footer on slides; in the `figcaption` on web pages. Never twice.
+5. **Don't repeat the headline.** On a slide (or under a heading) that already states the finding, call
+   `am.title(ax, None, "what is measured")` so the chart carries only the measure line.
+6. Minimal ink: no top/right/left spines, light gridlines on the value axis only, no 3D, no pie charts with
    more than three slices, direct labels instead of legends where possible. Horizontal bars for brand lists,
    sorted by value unless the order means something.
-6. Axis labels state the full measure ("Share of aware respondents who noticed the brand there, multiple
+7. Axis labels state the full measure ("Share of aware respondents who noticed the brand there, multiple
    answers"), and percentages carry `%`; changes are in "pp" (percentage points), with a real minus sign `−`.
 
 ```python
-import sys; sys.path.insert(0, "<this skill>/scripts"); import am_brand as am
+import sys; sys.dont_write_bytecode = True; sys.path.insert(0, "<this skill>/scripts")
+import am_brand as am
 import matplotlib.pyplot as plt
 am.use_matplotlib()                      # transparent PNG, house fonts and colours
 fig, ax = plt.subplots()
-ax.barh(labels, values, xerr=ci, color=am.focus(labels, "ZINTO"))
+ax.barh(labels, values, xerr=ci, color=am.focus(labels, "ZINTO"), error_kw=am.err_kw())
 am.title(ax, "ZINTO is known by fewer than half of Austrians", "Aided awareness, % of respondents, 95% CI")
 am.source(ax, "Base: all respondents, n = 1,003.")
 fig.savefig("awareness.png")
 ```
+
+Charts are transparent with dark text, so they suit light pages and slides. For a dark slide or a
+dark-mode web page, render a second version with `am.use_matplotlib(dark=True)` (see `media.md`, Dashboards
+and Blog, for swapping light/dark images).
 
 For plotly: `am.plotly_template()` registers and activates the `alpha_metrics` template. For HTML/JS charts,
 read the colours from the CSS variables in `brand.css` (`--mark`, `--mark-dim`, `--ramp-1…5`, `--grid`).
@@ -113,17 +123,26 @@ read the colours from the CSS variables in `brand.css` (`--mark`, `--mark-dim`, 
 `scripts/am_brand.py` builds the house layouts so you do not redraw them each time:
 
 - **Word**: `am.docx_new(title, subtitle)` → A4, house fonts and colours, logo in the header, footer with name,
-  city, email and page number. `am.docx_table(doc, rows, num_cols=(1, 2))` for tables, `am.docx_apply(doc)`
-  to restyle an existing document.
+  city, email and page number. `am.docx_letter(recipient, subject, paragraphs)` for letters.
+  `am.docx_table(doc, rows, num_cols=(1, 2), widths_cm=[...])` for tables, `am.docx_apply(doc)` to restyle
+  an existing document.
 - **PowerPoint** (16:9): `am.pptx_new()`, then `slide_title`, `slide_section`, `slide_content`,
   `slide_kpis`, `slide_chart`, `slide_closing`. Each content slide gets the mark, the name, an optional
   source line and the slide number in the footer.
-- **Charts**: `use_matplotlib`, `title`, `source`, `focus`, `palette`, `plotly_template`.
+- **Charts**: `use_matplotlib`, `title`, `source`, `focus`, `palette`, `err_kw`, `plotly_template`.
 - `am.logo(kind, dark)` returns the right logo path; `am.C`, `am.D` are the colour dicts.
 
 Install what you need (`pip install python-docx python-pptx matplotlib`). If the helpers do not fit — another
 language, Google Slides, Canva, Figma — apply the same tokens by hand from `tokens.json`. If you are working
 with a `docx`, `pptx` or `xlsx` skill, use that skill for the file mechanics and this one for the look.
+
+Import with `sys.dont_write_bytecode = True` (as above) so Python does not write a `__pycache__` folder
+into the skill.
+
+Fonts: Palatino Linotype and Segoe UI ship with Windows and Office. On machines without them (Linux
+containers, some Macs) previews and charts fall back to a similar serif and Inter/Arial; serifs may run wider,
+so leave headline room. The delivered .docx/.pptx still name the house fonts and look right on the
+recipient's Windows/Office machine. Say so when you hand over files rendered without the real fonts.
 
 After building any visual file, render it (e.g. LibreOffice → PDF → PNG) and look at it before handing it
 over: check that text does not overflow, the logo is the right version for the background, and charts are sharp.

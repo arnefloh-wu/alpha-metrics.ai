@@ -32,7 +32,8 @@ Build with `am.docx_new()`; restyle existing ones with `am.docx_apply(doc)`.
   aligned; a caption line with base and source below (`am.docx_table(..., note=...)`).
 - Charts at full text width (16 cm), PNG at 220 dpi from `use_matplotlib()`.
 - Cover page for longer reports: tagline logo, title, subtitle, client name, date; plenty of white space.
-- Letters: logo top left, sender block small and grey top right, date, subject in bold, body, signature.
+- Letters: `am.docx_letter(...)` — logo top left, sender block small and grey top right, recipient, date,
+  subject in bold, body, signature. Keep to one page.
 - PDF delivery: convert from Word; check that fonts embedded (Palatino Linotype, Segoe UI).
 
 ## Dashboards
@@ -41,6 +42,7 @@ Build with `am.docx_new()`; restyle existing ones with `am.docx_apply(doc)`.
 - Header: logo (swap light/dark with `.logo-light` / `.logo-dark`), dashboard title in the serif.
 - KPI row: `.card .kpi` with label, big serif value, interval and base (`.ci`, `.base`); deltas with
   `.delta-up` / `.delta-down` and a sign (+6 pp / −4 pp).
+- Charts: light and dark versions as for blog posts (below) if the dashboard supports dark mode.
 - Charts: highlight blue for the focal series, grey for others, ramp for ordered categories, gridlines
   `--grid`, tooltips on a card background. Every chart has a one-line source/base under it.
 - Filters as quiet controls (tint background, hairline border); never more than one accent colour.
@@ -52,7 +54,12 @@ Build with `am.docx_new()`; restyle existing ones with `am.docx_apply(doc)`.
 
 - Use `brand.css`; wrap the article in `.prose` (max ~720 px). Kicker above the H1 (category · date),
   lede paragraph in `.lede`, H2s in the serif, pull quotes as `blockquote` (blue left rule, serif).
-- One hero chart or image, not a stock photo. Figures with `figcaption` carrying base and source.
+- One hero chart or image, not a stock photo. Figures with `figcaption` carrying base and source (so
+  leave `am.source` out of the PNG).
+- Dark mode: render the chart twice (`use_matplotlib()` and `use_matplotlib(dark=True)`) and show the
+  right one with the same classes the logo uses, which follow both the system setting and a forced
+  `data-theme`:
+  `<img class="logo-light" src="chart.png" alt="…"><img class="logo-dark" src="chart-dark.png" alt="">`
 - End with a short "What this means for you" and a quiet call to action (a `.btn` linking to contact).
 - Meta/OG image: 1200 × 630, navy background `#0d1828`, dark logo top left, serif headline in off-white,
   one highlight-blue element (like the site's social card).
