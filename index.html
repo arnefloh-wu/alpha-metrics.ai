@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>alpha-metrics.ai | Market research for brands in Austria and the DACH region</title>
-  <meta name="description" content="Brand tracking, consumer surveys and decision-ready analytics from Vienna. Every result comes with confidence intervals, quality controls and honest limits.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'">
+  <meta name="description" content="Brand tracking, consumer surveys and AI advertising effectiveness research from Vienna. Decision-ready analytics with quality controls and honest limits.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://bzrcdn.openai.com; style-src 'self'; img-src 'self' data: https://bzr.openai.com; connect-src 'self' https://formspree.io https://bzr.openai.com https://bzrcdn.openai.com; form-action https://formspree.io; base-uri 'self'">
   <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://alpha-metrics.ai/">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="alpha-metrics.ai">
   <meta property="og:title" content="alpha-metrics.ai | Market research that says what the sample can carry">
-  <meta property="og:description" content="Brand tracking, consumer surveys and decision-ready analytics from Vienna, with confidence intervals and honest limits on every result.">
+  <meta property="og:description" content="Brand tracking, consumer surveys and AI advertising effectiveness research from Vienna, with honest limits on every result.">
   <meta property="og:url" content="https://alpha-metrics.ai/">
   <meta property="og:image" content="https://alpha-metrics.ai/assets/og-card.png">
   <meta property="og:image:width" content="1200">
@@ -30,11 +30,11 @@
     "@type": "ProfessionalService",
     "name": "alpha-metrics.ai",
     "url": "https://alpha-metrics.ai/",
-    "description": "Market research from Vienna: brand tracking, consumer surveys and decision-ready analytics for brands in Austria and the DACH region.",
+    "description": "Market research from Vienna: brand tracking, consumer surveys and AI advertising effectiveness research for brands in Austria and the DACH region.",
     "email": "info@alpha-metrics.ai",
     "address": { "@type": "PostalAddress", "addressLocality": "Vienna", "addressCountry": "AT" },
     "areaServed": ["AT", "DE", "CH"],
-    "knowsAbout": ["Market research", "Brand tracking", "Survey design", "Consumer insights", "Statistical analysis"],
+    "knowsAbout": ["Market research", "Brand tracking", "Survey design", "Consumer insights", "Statistical analysis", "Advertising effectiveness", "A/B testing", "AI advertising"],
     "sameAs": ["https://www.linkedin.com/company/112210061/"]
   }
   </script>
@@ -70,6 +70,7 @@
       </a>
       <ul class="nav-links" id="nav-links">
         <li><a href="#services">Services</a></li>
+        <li><a href="#ai-advertising">AI Advertising</a></li>
         <li><a href="#approach">Approach</a></li>
         <li><a href="#showcase">Showcase</a></li>
         <li><a href="#standards">Standards</a></li>
@@ -86,6 +87,18 @@
     </div>
   </header>
 
+  <section class="measurement-panel" id="measurement-panel" aria-labelledby="measurement-heading" tabindex="-1" hidden>
+    <div class="wrap measurement-inner">
+      <div>
+        <h2 id="measurement-heading">Optional advertising measurement</h2>
+        <p>With your permission, we use the OpenAI Measurement Pixel to measure visits and successful enquiries and help OpenAI measure and improve advertising services. It uses browser identifiers and cookies and may detect and hash supported contact details for matching. This is optional; the site and contact form work without it. You can change your choice at any time. <a href="datenschutz.html#advertising-measurement">Privacy details</a>.</p>
+      </div>
+      <div class="measurement-actions">
+        <button class="btn btn-ghost" id="measurement-decline" type="button">Decline</button>
+        <button class="btn btn-ghost" id="measurement-accept" type="button">Allow measurement</button>
+      </div>
+    </div>
+  </section>
   <main id="main">
     <!-- ================= HERO ================= -->
     <section class="hero" id="top">
@@ -93,7 +106,7 @@
         <div>
           <p class="eyebrow">Market research &middot; Vienna</p>
           <h1>Market research that says what the sample <em>can carry.</em></h1>
-          <p class="lede">We design, field and analyse brand and consumer studies for companies in Austria and the DACH region. Every number comes with its confidence interval, its base and its limits, so you can decide on it.</p>
+          <p class="lede">We design, field and analyse brand, consumer and advertising effectiveness studies for companies in Austria and the DACH region. Every number comes with its confidence interval, its base and its limits, so you can decide on it.</p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#showcase">See the showcase <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="#contact">Book a conversation</a>
@@ -101,6 +114,7 @@
           <ul class="hero-points">
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Brand tracking and funnel studies</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Cross-country designs</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>AI advertising and A/B testing</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Dashboards and reporting</li>
           </ul>
         </div>
@@ -119,7 +133,7 @@
         <div class="section-head reveal">
           <p class="eyebrow">What we do</p>
           <h2>From the research question to a decision you can defend</h2>
-          <p class="lede">Four services that fit together. Take one, or let us run the whole study.</p>
+          <p class="lede">Four core research services that fit together, complemented by our AI advertising research offering. Take one, or let us run the whole study.</p>
         </div>
         <div class="grid-4">
           <article class="card service reveal">
@@ -143,6 +157,51 @@
             <p>Interactive dashboards that suppress thin subgroups, a plain-language management deck and a field report that documents every exclusion.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ================= AI ADVERTISING ================= -->
+    <section class="section" id="ai-advertising">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">AI advertising &amp; effectiveness research</p>
+          <h2>Which message works in conversational AI?</h2>
+          <p class="lede">We bring experimental research to advertising on platforms such as ChatGPT. Test competing brand messages in real advertising environments and find out what the observed response can tell you, before committing a larger media budget.</p>
+        </div>
+        <div class="grid-4">
+          <article class="card service reveal">
+            <span class="ico"><svg aria-hidden="true"><use href="#i-clip"/></svg></span>
+            <h3>Experimental design</h3>
+            <p>Define hypotheses, competing creative variants, the primary outcome, budget and stopping rule before launch. Change one element at a time where feasible.</p>
+          </article>
+          <article class="card service reveal">
+            <span class="ico"><svg aria-hidden="true"><use href="#i-layers"/></svg></span>
+            <h3>Campaign setup and management</h3>
+            <p>Configure client-owned campaigns, keep targeting and settings comparable, and monitor delivery. Platform and market eligibility are checked before launch.</p>
+          </article>
+          <article class="card service reveal">
+            <span class="ico"><svg aria-hidden="true"><use href="#i-line"/></svg></span>
+            <h3>Advertising effectiveness</h3>
+            <p>Analyse impressions, clicks, click-through rates and costs from aggregate reports. Quantify differences, uncertainty and delivery imbalances; assess conversions where tracking permits.</p>
+          </article>
+          <article class="card service reveal">
+            <span class="ico"><svg aria-hidden="true"><use href="#i-bars"/></svg></span>
+            <h3>Organic AI brand visibility</h3>
+            <p>Separately audit brand mentions and recommendations across a defined set of prompts, recording the model, market and date. Paid placement is not a proxy for organic visibility.</p>
+          </article>
+        </div>
+        <div class="section-head reveal sample-head">
+          <h3>A small pilot, a clear decision</h3>
+          <p class="lede">Compare two value propositions &mdash; for example, taste versus a functional benefit &mdash; with a fixed media budget and a predefined reporting period. Receive a management summary, a documented research protocol and reproducible analysis.</p>
+        </div>
+        <div class="case-note reveal">
+          <svg aria-hidden="true"><use href="#i-info"/></svg>
+          <p><strong>Performance is not necessarily causality.</strong> Without verified random allocation, a comparison is a quasi-experimental field study. Algorithmic delivery, repeated impressions and aggregate reporting limit causal inference and audience-level conclusions. We report those limits rather than treating a higher click-through rate as proof of a causal effect.</p>
+        </div>
+        <div class="hero-cta reveal">
+          <a class="btn btn-primary" href="#contact">Discuss an AI advertising pilot <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+        <p class="chart-foot">Independent research and consulting; no affiliation with or endorsement by OpenAI is implied. Campaign delivery depends on platform availability and advertiser approval.</p>
       </div>
     </section>
 
@@ -364,13 +423,13 @@
           <p class="eyebrow">About</p>
           <h2>Research-led, built for decisions</h2>
           <p class="lede">alpha-metrics.ai is a market research practice based in Vienna. We combine careful survey craft with statistical discipline, and we deliver it at the pace of a commercial project.</p>
-          <p>Our focus is brand and consumer research for companies in Austria, Germany and Switzerland: who knows you, who considers you, who buys, and what would change that.</p>
+          <p>Our focus is brand, consumer and advertising effectiveness research for companies in Austria, Germany and Switzerland: who knows you, who considers you, who buys, and what the evidence says about competing messages.</p>
         </div>
         <div class="reveal">
           <ul class="facts">
             <li><span>Based in</span><span>Vienna, Austria</span></li>
             <li><span>Markets</span><span>Austria, Germany, Switzerland</span></li>
-            <li><span>Methods</span><span>Online surveys, tracking, driver models</span></li>
+            <li><span>Methods</span><span>Online surveys, tracking, driver models, advertising tests</span></li>
             <li><span>Fieldwork</span><span>Established online panels</span></li>
             <li><span>Languages</span><span>German and English</span></li>
             <li><span>Data protection</span><span>Handled under the GDPR</span></li>
@@ -413,6 +472,7 @@
       <nav aria-label="Legal">
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Privacy</a>
+        <button class="measurement-settings" id="measurement-settings" type="button" aria-controls="measurement-panel" aria-expanded="false" hidden>Advertising privacy settings</button>
         <a href="https://www.linkedin.com/company/112210061/" rel="noopener">LinkedIn</a>
       </nav>
     </div>
@@ -422,6 +482,7 @@
   <noscript><p class="wrap small muted">The charts in the showcase need JavaScript. Their figures are also summarised in the text beside each chart.</p></noscript>
   <script src="js/data.js"></script>
   <script src="js/charts.js"></script>
+  <script src="js/ad-measurement.js"></script>
   <script src="js/site.js"></script>
 </body>
 </html>

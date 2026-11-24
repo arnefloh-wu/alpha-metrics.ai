@@ -453,3 +453,22 @@ p { margin: 0 0 1em; }
   .section { padding: 28px 0; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* Optional advertising measurement, using the existing theme tokens. */
+.measurement-panel[hidden], .measurement-settings[hidden] { display: none; }
+.measurement-panel { background: var(--tint); border-bottom: 1px solid var(--hair); padding: 22px 0; scroll-margin-top: 100px; }
+.measurement-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.measurement-panel h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.measurement-panel p { font-size: .92rem; color: var(--ink-2); margin: 0; max-width: 78ch; }
+.measurement-actions { display: flex; flex-wrap: wrap; gap: 10px; flex: none; }
+.measurement-actions .btn { background: var(--card); border-color: var(--ink-3); color: var(--ink); font-size: .9rem; }
+.measurement-actions .btn:hover { background: var(--tint); }
+.measurement-settings { border: 0; background: none; padding: 0; font: inherit; color: var(--ink-2); cursor: pointer; text-align: left; }
+.measurement-settings:hover { color: var(--ink); text-decoration: underline; }
+.measurement-panel:focus-visible, .measurement-settings:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+@media (max-width: 860px) {
+  .measurement-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .measurement-actions { width: 100%; }
+  .measurement-actions .btn { flex: 1 1 145px; }
+}
+@media print { .measurement-panel, .measurement-settings { display: none !important; } }

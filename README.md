@@ -17,10 +17,14 @@ The site is static: plain HTML, CSS and JavaScript, no build step, no dependenci
 | `js/site.js` | Menu, theme toggle, scroll reveal, contact form |
 | `js/theme-init.js` | Restores the saved theme before first paint |
 | `showcase/dashboard.html` | Demo dashboard, German interface. **Generated** |
-| `impressum.html`, `datenschutz.html` | Legal pages (drafts, see below) |
+| `impressum.html`, `datenschutz.html` | Legal pages (release review required, see below) |
 | `assets/logo/` | The logo: wordmark in dark blue, light blue, white and one colour, plus a lockup with the line "Where science meets business". **Generated** |
 | `tools/` | Scripts that regenerate `js/data.js`, the demo dashboard and the logo files (`make_logo.py`) |
 | `CNAME`, `.nojekyll`, `robots.txt`, `sitemap.xml`, `404.html` | Hosting files |
+
+## AI advertising research
+
+The homepage includes an independent AI advertising effectiveness service. The reusable aggregate-reporting research toolkit is documented in [`tools/ad-research/README.md`](tools/ad-research/README.md). Its example is entirely synthetic; never commit real client exports or unpublished campaign information to this public repository.
 
 ## The showcase is synthetic
 
@@ -46,9 +50,7 @@ publishing something half right.
   (funnel stages, age bands) use a one-hue ramp. All ramps were checked with the
   data-visualisation palette validator in light and dark mode, and text and mark
   contrast was computed, not judged by eye. Every chart has a table view.
-- **Privacy by construction.** No cookies, no analytics, no third-party fonts, scripts or
-  images. A Content-Security-Policy meta tag enforces this; the only allowed outside
-  request is the contact form post to Formspree. System fonts are used throughout.
+- **Privacy by construction.** No advertising SDK is loaded without affirmative visitor consent. The homepage supports optional OpenAI advertising measurement and a separate withdrawal control. Formspree remains independent of advertising consent. System fonts are used throughout. See `tools/ad-research/measurement.md` before deployment.
 - **Accessibility.** Skip link, semantic headings, keyboard-focusable chart marks with
   the same tooltip as hover, reduced-motion support, light and dark themes.
 
@@ -63,9 +65,8 @@ publishing something half right.
 
 ## Before the site is promoted
 
-- Complete the red fields in `impressum.html` and `datenschutz.html` and have a lawyer
-  review both. Austrian law requires an Impressum on a commercial website.
-- Confirm the data processing agreement with Formspree and name the DNS provider in the
-  privacy notice if it processes visitor data.
+- Review and complete the advertising measurement privacy disclosure and verify SDK behavior, consent withdrawal and event delivery before enabling tracking in production.
+
+- Business details and visitor-facing privacy wording are complete. Review the legal pages and confirm the remaining provider arrangements before activation, as listed in `tools/ad-research/measurement.md`. Retain evidence of contractual arrangements in private company records, not in this public repository.
 - Read the six rules in the Standards section and confirm that they describe how the
   company actually works. They are promises to clients.
