@@ -1,0 +1,20 @@
+name: Advertising measurement browser QA
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feature/ai-advertising-research]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --package-lock=false playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - run: node tools/ad-research/browser-test.mjs
