@@ -52,7 +52,7 @@
   }
 
   /* ---------- active section in the menu ---------- */
-  var sections = ['services', 'approach', 'showcase', 'standards', 'about', 'contact'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var sections = ['market-research', 'ai-advertising', 'ai-consulting', 'ai-training', 'approach', 'showcase', 'standards', 'about', 'contact'].map(function (id) { return document.getElementById(id); }).filter(Boolean);
   var navA = {};
   Array.prototype.forEach.call(document.querySelectorAll('.nav-links a[href^="#"]'), function (a) { navA[a.getAttribute('href').slice(1)] = a; });
   if ('IntersectionObserver' in window && sections.length) {
@@ -60,7 +60,8 @@
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
         Object.keys(navA).forEach(function (k) { navA[k].removeAttribute('aria-current'); });
-        if (navA[en.target.id]) navA[en.target.id].setAttribute('aria-current', 'true');
+        var sectionId = ['approach', 'showcase', 'standards'].indexOf(en.target.id) !== -1 ? 'market-research' : en.target.id;
+        if (navA[sectionId]) navA[sectionId].setAttribute('aria-current', 'true');
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(function (s) { so.observe(s); });
@@ -84,21 +85,26 @@
     if (!form.elements.consent.checked) { setErr('consent', 'Please confirm so that we may reply to you.'); bad = bad || form.elements.consent; } else setErr('consent', '');
     return bad;
   }
+  var sending = false;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    if (sending) return;
     ok.classList.remove('on'); fail.hidden = true;
     if (form.elements._gotcha && form.elements._gotcha.value) return;   // honeypot
     var bad = validate();
     if (bad) { bad.focus(); return; }
     var btn = form.querySelector('button[type="submit"]'), label = btn.querySelector('span');
-    btn.disabled = true; label.textContent = 'Sending…';
+    var submitLabel = label.textContent;
+    sending = true; btn.disabled = true; label.textContent = 'Sending…';
     fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (r) {
         if (!r.ok) throw new Error('status ' + r.status);
+        // Only accepted submissions count; measurement must never break the form.
+        try { if (window.alphaAdsMeasurement) window.alphaAdsMeasurement.lead(); } catch (e) { /* optional measurement */ }
         form.reset(); ok.classList.add('on'); ok.focus();
       })
       .catch(function () { fail.hidden = false; })
-      .then(function () { btn.disabled = false; label.textContent = 'Send message'; });
+      .then(function () { sending = false; btn.disabled = false; label.textContent = submitLabel; });
   });
   Array.prototype.forEach.call(form.querySelectorAll('input, textarea'), function (f) {
     f.addEventListener('input', function () { if (f.getAttribute('aria-invalid')) setErr(f.name, ''); });

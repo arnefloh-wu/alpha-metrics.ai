@@ -469,3 +469,64 @@ p { margin: 0 0 1em; }
   .section { padding: 28px 0; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* Optional advertising measurement, using the existing theme tokens. */
+.measurement-panel[hidden], .measurement-settings[hidden] { display: none; }
+.measurement-panel { background: var(--tint); border-bottom: 1px solid var(--hair); padding: 22px 0; scroll-margin-top: 100px; }
+.measurement-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.measurement-panel h2 { font-size: 1.15rem; margin: 0 0 8px; }
+.measurement-panel p { font-size: .92rem; color: var(--ink-2); margin: 0; max-width: 78ch; }
+.measurement-actions { display: flex; flex-wrap: wrap; gap: 10px; flex: none; }
+.measurement-actions .btn { background: var(--card); border-color: var(--ink-3); color: var(--ink); font-size: .9rem; }
+.measurement-actions .btn:hover { background: var(--tint); }
+.measurement-settings { border: 0; background: none; padding: 0; font: inherit; color: var(--ink-2); cursor: pointer; text-align: left; }
+.measurement-settings:hover { color: var(--ink); text-decoration: underline; }
+.measurement-panel:focus-visible, .measurement-settings:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+@media (max-width: 860px) {
+  .measurement-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .measurement-actions { width: 100%; }
+  .measurement-actions .btn { flex: 1 1 145px; }
+}
+@media print { .measurement-panel, .measurement-settings { display: none !important; } }
+
+/* Four service pillars: equal visual weight and a short route to each offer. */
+.pillar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; scroll-margin-top: 88px; }
+.pillar { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 23px 20px 20px; color: var(--ink); text-decoration: none; min-width: 0; transition: border-color .15s, background .15s; }
+.pillar:hover { border-color: var(--link); background: var(--tint); }
+.pillar:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.pillar-number { position: absolute; right: 18px; top: 20px; color: var(--ink-3); font-size: .8rem; font-weight: 600; letter-spacing: .08em; }
+.pillar-icon { width: 34px; height: 34px; color: var(--link); }
+.pillar h2 { font-size: clamp(1.08rem, 1.5vw, 1.32rem); line-height: 1.2; margin: 3px 0 0; }
+.pillar p { font-size: .94rem; line-height: 1.5; color: var(--ink-2); margin: 0 0 8px; }
+.pillar-link { display: flex; align-items: center; gap: 6px; margin-top: auto; color: var(--link); font-size: .84rem; font-weight: 600; }
+.pillar-link svg { width: 15px; height: 15px; flex: none; }
+.research-preview { margin-top: clamp(32px, 5vw, 64px); align-items: center; }
+.research-preview h3 { font-size: clamp(1.35rem, 2.4vw, 1.9rem); }
+.service-outcome { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 24px; padding: 25px 28px; border: 1px solid var(--hair); border-radius: var(--radius); background: var(--card); }
+.service-outcome > div { flex: 1 1 350px; min-width: 0; }
+.service-outcome h3 { margin: 0 0 8px; }
+.service-outcome p { margin: 0; color: var(--ink-2); max-width: 64ch; }
+#market-research, #ai-advertising, #ai-consulting, #ai-training, #approach, #showcase, #standards, #about, #contact { scroll-margin-top: 78px; }
+@media (max-width: 1080px) and (min-width: 861px) {
+  .nav-in { gap: 10px; }
+  .nav-links { gap: 0; }
+  .nav-links a { padding: 9px 7px; font-size: .87rem; white-space: nowrap; }
+}
+@media (max-width: 460px) {
+  .pillar-grid { gap: 10px; }
+  .pillar { padding: 17px 13px 15px; gap: 7px; }
+  .pillar-number { top: 16px; right: 13px; }
+  .pillar-icon { width: 28px; height: 28px; }
+  .pillar p { font-size: .85rem; }
+  .pillar-link { font-size: .76rem; }
+  .service-outcome { padding: 20px; }
+  .service-outcome .btn { width: 100%; text-align: center; line-height: 1.25; }
+}
+
+/* Dedicated service pages */
+.nav-links a[aria-current="page"] { color: var(--ink); background: var(--tint); }
+.service-detail { padding-top: clamp(48px, 6vw, 84px); padding-bottom: clamp(40px, 5vw, 68px); }
+.service-detail .section-head { max-width: 900px; }
+.service-detail .section-head h1 { margin-bottom: 20px; font-size: clamp(2.3rem, 4.8vw, 4rem); }
+.quote-section { background: var(--tint); scroll-margin-top: 78px; }
+.quote-section .field > p { margin: 6px 0 0; }
