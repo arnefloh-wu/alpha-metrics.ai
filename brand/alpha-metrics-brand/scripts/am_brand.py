@@ -36,10 +36,11 @@ CONTACT = TOKENS["contact"]
 
 
 def logo(kind="logo", dark=False, fmt="png"):
-    """Path to a logo file. kind: logo | mark | wordmark | tagline | white | ink."""
-    base = {"logo": "alpha-metrics-logo", "mark": "alpha-metrics-mark", "wordmark": "alpha-metrics",
+    """Path to a logo file. kind: logo | logo-tagline | mark | wordmark | tagline | white | ink."""
+    base = {"logo": "alpha-metrics-logo", "logo-tagline": "alpha-metrics-logo-tagline",
+            "mark": "alpha-metrics-mark", "wordmark": "alpha-metrics",
             "tagline": "alpha-metrics-tagline", "white": "alpha-metrics-white", "ink": "alpha-metrics-ink"}[kind]
-    if dark and kind in ("logo", "mark", "wordmark", "tagline"):
+    if dark and kind in ("logo", "logo-tagline", "mark", "wordmark", "tagline"):
         base += "-dark"
     if fmt == "svg":
         return ASSETS / "logo" / (base + ".svg")

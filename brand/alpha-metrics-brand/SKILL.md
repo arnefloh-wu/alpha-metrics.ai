@@ -33,7 +33,8 @@ The logo is a rounded **dark-blue tile with a white α**, followed by the lowerc
 | Light background (default) | `alpha-metrics-logo.svg` / `alpha-metrics-logo-1200.png` |
 | Dark background | `alpha-metrics-logo-dark.svg` / `-logo-dark-1200.png` (light-blue tile, dark α, light-blue wordmark) |
 | Small square spaces: favicon, avatar, slide footer | `alpha-metrics-mark.svg` / `-mark-512.png`, dark: `-mark-dark` |
-| Title page, cover, closing slide | `alpha-metrics-tagline.svg` (wordmark + "Where science meets business"), dark: `-tagline-dark` |
+| Cover page, letterhead, title or closing slide | `alpha-metrics-logo-tagline.svg` / `-logo-tagline-1200.png` (tile + wordmark + "Where science meets business"), dark: `-logo-tagline-dark` |
+| Tagline without the tile (narrow spaces, after the tile is already shown) | `alpha-metrics-tagline.svg`, dark: `-tagline-dark` |
 | On photos or coloured fills | `alpha-metrics-white.svg` / `-white-1200.png` |
 | One-colour print, fax, stamp | `alpha-metrics-ink.svg` / `-ink-1200.png` |
 

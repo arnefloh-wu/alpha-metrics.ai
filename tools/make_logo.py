@@ -18,6 +18,8 @@ Writes
   assets/logo/alpha-metrics-ink.svg       wordmark, one colour, near black, for print
   assets/logo/alpha-metrics-tagline.svg       wordmark and tagline, for light backgrounds
   assets/logo/alpha-metrics-tagline-dark.svg  the same, for dark backgrounds
+  assets/logo/alpha-metrics-logo-tagline.svg       tile, wordmark and tagline, for light backgrounds
+  assets/logo/alpha-metrics-logo-tagline-dark.svg  the same, for dark backgrounds
   assets/favicon.svg, assets/apple-touch-icon.png, favicon.ico   the tile
 and replaces the logo in the top-left of assets/og-card.png.
 
@@ -182,6 +184,17 @@ for name, fill, grey in (('alpha-metrics-tagline', BLUE, GREY),
                          ('alpha-metrics-tagline-dark', BLUE_DARK_BG, GREY_DARK_BG)):
     write('assets/logo/%s.svg' % name,
           svg(lock_box, '<path fill="%s" d="%s"/><path fill="%s" d="%s"/>' % (fill, d, grey, td)))
+
+# Full lockup: a tile as tall as the wordmark and tagline together, to their left.
+LT = lock_box[3] - lock_box[1]
+lt_x, lt_y = lock_box[0] - 60 - LT, lock_box[1]
+full_box = (lt_x, lock_box[1], lock_box[2], lock_box[3])
+for name, fill, grey, tile_fill, alpha_fill in (
+        ('alpha-metrics-logo-tagline', BLUE, GREY, BLUE, WHITE),
+        ('alpha-metrics-logo-tagline-dark', BLUE_DARK_BG, GREY_DARK_BG, BLUE_DARK_BG, TILE_INK)):
+    write('assets/logo/%s.svg' % name,
+          svg(full_box, '<g transform="translate(%s %s) scale(%s)">%s</g><path fill="%s" d="%s"/><path fill="%s" d="%s"/>'
+              % (num(lt_x), num(lt_y), num(LT / 64), mark(tile_fill, alpha_fill), fill, d, grey, td)))
 
 # Social card: keep the layout, redraw the logo in the top-left corner.
 if not HAVE_FONTS:
