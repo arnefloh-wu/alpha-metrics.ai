@@ -8,6 +8,7 @@
   var accept = document.getElementById('measurement-accept');
   var decline = document.getElementById('measurement-decline');
   if (!panel || !settings || !accept || !decline) return;
+  settings.hidden = false;
   var allowed = false, initialized = false, viewed = false;
 
   function readChoice() {
@@ -77,7 +78,7 @@
   function choose(choice) {
     saveChoice(choice);
     apply(choice);
-    settings.focus();
+    if (document.activeElement === accept || document.activeElement === decline) settings.focus({preventScroll: true});
   }
   settings.addEventListener('click', function () { showPanel(true); });
   accept.addEventListener('click', function () { choose('yes'); });
