@@ -1,0 +1,121 @@
+.scorecard {
+  display: grid;
+  gap: clamp(28px, 4vw, 48px);
+  max-width: 1100px;
+  padding-block: clamp(36px, 6vw, 68px);
+}
+
+.scorecard > section, .scorecard-hero { display: grid; gap: 14px; min-width: 0; }
+.scorecard-hero { border-top: 1px solid var(--hair); padding-top: 26px; }
+.scorecard-hero .btn { justify-self: start; }
+.scorecard p { margin: 0; }
+.scorecard .scorecard-question {
+  max-width: 48ch;
+  font: 600 clamp(1.2rem, 2.6vw, 1.55rem)/1.28 var(--serif);
+}
+.scorecard .pills, .scorecard .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.scorecard .pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--hair);
+  font-size: .92rem;
+}
+.scorecard .pill.top { border-color: var(--mark); }
+.scorecard .pill .r { font-family: var(--serif); font-weight: 700; color: var(--link); }
+.scorecard .pill .s, .scorecard .sl .v { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+.scorecard-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.scorecard .step, .scorecard .controls {
+  display: grid;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  padding: 16px;
+}
+.scorecard .step { gap: 6px; align-content: start; background: var(--card); }
+.scorecard .step p, .scorecard .note { font-size: .9rem; color: var(--ink-3); }
+.scorecard .step code { font-size: .82em; background: var(--tint); overflow-wrap: anywhere; }
+.scorecard .n, .scorecard .kicker, .scorecard .lbl {
+  font: 700 .75rem/1.3 var(--sans);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.scorecard .controls { gap: 16px; background: var(--tint); }
+.scorecard .seg {
+  font: inherit;
+  font-size: .9rem;
+  border: 1px solid var(--hair);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 6px 13px;
+  cursor: pointer;
+}
+.scorecard .seg[aria-pressed="true"] { background: var(--btn-bg); border-color: var(--btn-bg); color: var(--btn-ink); }
+.scorecard .sliders { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 22px; }
+.scorecard .sl { display: grid; grid-template-columns: 7.5em minmax(0, 1fr) 3em; align-items: center; gap: 8px; font-size: .9rem; }
+.scorecard .sl input { width: 100%; min-width: 0; margin: 0; accent-color: var(--link); }
+.scorecard .sl .v { text-align: right; }
+
+.scorecard-split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); align-items: start; gap: 16px; }
+.scorecard .card { display: grid; gap: 12px; margin: 0; padding: clamp(12px, 2.4vw, 22px); box-shadow: none; min-width: 0; }
+.scorecard .ctitle { font: 600 1.2rem/1.25 var(--serif); }
+.scorecard .csub, .scorecard figcaption { font-size: .88rem; color: var(--ink-3); }
+.scorecard details summary { cursor: pointer; color: var(--link); font-size: .9rem; }
+.scorecard-chart, .scorecard .tw { overflow-x: auto; }
+.scorecard table { border-collapse: collapse; font-size: .9rem; font-variant-numeric: tabular-nums; }
+.scorecard th, .scorecard td { text-align: left; border-bottom: 1px solid var(--hair); padding: 5px 8px; }
+.scorecard .num { text-align: right; }
+.scorecard svg text { fill: var(--ink-2); font: 12px var(--sans); }
+.scorecard svg .country { fill: var(--ink); font-size: 13px; font-weight: 600; }
+.scorecard svg .val { fill: var(--ink); font-variant-numeric: tabular-nums; }
+.scorecard svg .gl { stroke: var(--grid); stroke-width: 1; }
+.scorecard svg .mark { fill: var(--mark); }
+.scorecard svg .mark.dim { fill: var(--mark-dim); }
+.scorecard svg .raw-dot { stroke: var(--card); stroke-width: 2; }
+.scorecard svg rect.bar { cursor: pointer; }
+
+.scorecard .rk { display: inline-grid; place-items: center; min-width: 28px; height: 24px; border-radius: 6px; font-weight: 600; }
+.scorecard .hm { border-collapse: separate; border-spacing: 2px; font-size: .78rem; width: 100%; }
+.scorecard .hm th, .scorecard .hm td { border: 0; padding: 0; }
+.scorecard .hm th { font-size: .72rem; color: var(--ink-3); text-align: center; padding-bottom: 4px; }
+.scorecard .hm .c { min-width: 37px; height: 22px; border-radius: 3px; text-align: center; cursor: pointer; }
+.scorecard .hm .id { color: var(--ink-3); padding-right: 6px; white-space: nowrap; }
+.scorecard .hm .nm { padding-right: 10px; max-width: 240px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+.scorecard .hm .sel .nm { color: var(--link); font-weight: 700; }
+.scorecard .hm .gap td { height: 8px; }
+.scorecard .ramp-1 { background: var(--ramp-1); color: var(--ink); }
+.scorecard .ramp-2 { background: var(--ramp-2); color: var(--ink); }
+.scorecard .ramp-3 { background: var(--ramp-3); color: var(--btn-ink); }
+.scorecard .ramp-4 { background: var(--ramp-4); color: var(--btn-ink); }
+.scorecard .ramp-5 { background: var(--ramp-5); color: var(--btn-ink); }
+.scorecard .tip {
+  position: fixed;
+  pointer-events: none;
+  z-index: 20;
+  max-width: 270px;
+  padding: 8px 10px;
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  font-size: .82rem;
+  line-height: 1.45;
+}
+.scorecard .scorecard-source { border-top: 1px solid var(--hair); padding-top: 16px; }
+.scorecard .service-outcome { margin-top: 0; }
+
+@media (max-width: 860px) {
+  .scorecard-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .scorecard-split { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 720px) {
+  .scorecard .sliders { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 500px) {
+  .scorecard-steps, .scorecard .sliders { grid-template-columns: minmax(0, 1fr); }
+}

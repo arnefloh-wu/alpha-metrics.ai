@@ -89,6 +89,7 @@ try {
       await page.locator('.pillar-grid a[href="'+slug+'.html"]').click();
       assert.equal(new URL(page.url()).pathname,'/'+slug+'.html');
       assert.equal(await page.locator('.nav-links a[aria-current="page"]').textContent(),title);
+      assert.equal(await page.locator('.nav-links a[href="use-cases.html"]').count(),1);
       assert.equal(await page.locator('#showcase').count(),slug==='market-research'?1:0);
       assert.equal(await page.locator('#get-a-quote').count(),1);
       assert.equal(await form.locator('[name=service]').inputValue(),title);
@@ -118,6 +119,29 @@ try {
     await page.goto(origin+'/?qa=1#showcase');
     await page.waitForURL('**/market-research.html?qa=1#showcase');
     assert.equal(await page.locator('#showcase').count(),1);
+    await page.goto(origin);
+    if (viewport.width <= 860) await click('menu-btn');
+    await page.getByRole('link', {name:'Use Cases'}).click();
+    assert.equal(new URL(page.url()).pathname,'/use-cases.html');
+    assert.equal(await page.locator('.nav-links a[aria-current="page"]').textContent(),'Use Cases');
+    assert.equal(await page.locator('#verdict .pill').count(),6);
+    assert.equal(await page.locator('#hm tr[data-i]').count(),45);
+    const baseline = await page.locator('#verdict').textContent();
+    await page.getByRole('button', {name:'Access-led'}).click();
+    assert.notEqual(await page.locator('#verdict').textContent(),baseline);
+    assert.equal(await page.locator('#w-LE').inputValue(),'40');
+    await page.getByRole('slider', {name:'Legal'}).press('Home');
+    assert.equal(await page.locator('#rob').getByRole('columnheader', {name:'Your weights'}).count(),1);
+    const minMax = await page.locator('#verdict').textContent();
+    await click('m-t');
+    assert.equal(await page.locator('#m-t').getAttribute('aria-pressed'),'true');
+    assert.notEqual(await page.locator('#verdict').textContent(),minMax);
+    await page.locator('#bars rect[data-c="1"]').press('Enter');
+    assert.match(await page.locator('#t-drv').textContent(),/Brazil/);
+    await page.locator('#hm td[data-i="0"]').first().press('Enter');
+    assert.match(await page.locator('#detail .ctitle').textContent(),/Political stability/);
+    assert.equal(await page.locator('.scorecard').evaluate(node => node.scrollWidth <= node.clientWidth),true);
+    assert.equal(await page.getByRole('link', {name:'Request a market research quote'}).getAttribute('href'),'market-research.html#get-a-quote');
     await context.close();
     console.log('PASS mock SDK/form browser acceptance '+viewport.width+'px');
   }
