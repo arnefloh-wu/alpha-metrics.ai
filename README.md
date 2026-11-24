@@ -10,7 +10,9 @@ The site is static: plain HTML, CSS and JavaScript, no build step, no dependenci
 
 | Path | What it is |
 |---|---|
-| `index.html` | The single page: four service pillars, research approach, showcase, standards, about, contact |
+| `index.html` | Homepage: four service links, about and general contact |
+| `market-research.html` | Market research, quote form, methodology, showcase and standards |
+| `ai-advertising.html`, `ai-consulting.html`, `ai-training.html` | Dedicated service pages, each with its own quote form |
 | `css/site.css` | Styles, with validated light and dark colour tokens |
 | `js/charts.js` | The showcase charts (plain DOM, tooltips, table views) |
 | `js/data.js` | Figures for the charts. **Generated**, do not edit by hand |

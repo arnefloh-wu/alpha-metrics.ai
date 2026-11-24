@@ -24,7 +24,7 @@ try {
   browser = await chromium.launch({headless:true});
   for (const viewport of [{width:1280,height:900},{width:390,height:844}]) {
     const context = await browser.newContext({viewport});
-    let loads=0, submissions=0, responseStatus=200;
+    let loads=0, submissions=0, responseStatus=200, lastPayload='';
     await context.route('**/*', async route => {
       const url=new URL(route.request().url());
       if(url.origin===origin) return route.continue();
@@ -36,6 +36,7 @@ try {
       if(url.origin==='https://formspree.io') {
         if(route.request().method()==='OPTIONS') return route.fulfill({status:204,headers:{'access-control-allow-origin':origin,'access-control-allow-methods':'POST, OPTIONS','access-control-allow-headers':'content-type, accept'}});
         submissions++;
+        lastPayload=route.request().postData() || '';
         return route.fulfill({status:responseStatus,contentType:'application/json',headers:{'access-control-allow-origin':origin},body:JSON.stringify({ok:responseStatus===200})});
       }
       return route.abort();
@@ -81,6 +82,42 @@ try {
     assert.equal(loads,1,'No SDK reload after withdrawal');
     assert.equal(await count('lead_created'),0);
     assert.equal(await page.locator('#measurement-settings').isVisible(),true);
+    assert.equal(await page.locator('#showcase').count(),0,'Homepage must not contain research showcase');
+    assert.equal(await page.locator('.pillar-grid a').count(),4);
+    for (const [slug,title] of [['market-research','Market Research'],['ai-advertising','AI Advertising'],['ai-consulting','AI Consulting'],['ai-training','AI Training']]) {
+      await page.goto(origin);
+      await page.locator('.pillar-grid a[href="'+slug+'.html"]').click();
+      assert.equal(new URL(page.url()).pathname,'/'+slug+'.html');
+      assert.equal(await page.locator('.nav-links a[aria-current="page"]').textContent(),title);
+      assert.equal(await page.locator('#showcase').count(),slug==='market-research'?1:0);
+      assert.equal(await page.locator('#get-a-quote').count(),1);
+      assert.equal(await form.locator('[name=service]').inputValue(),title);
+      assert.equal(await form.locator('[name=request_type]').inputValue(),'Quote request');
+      const beforeLoads=loads, beforeSubmissions=submissions;
+      await submit();
+      assert.equal(submissions,beforeSubmissions+1,'Quote form works with measurement declined');
+      assert.equal(loads,beforeLoads,'Decline persists across pages');
+      assert.ok(lastPayload.includes('name="service"')&&lastPayload.includes(title),'Quote payload identifies service');
+      assert.ok(lastPayload.includes('name="request_type"')&&lastPayload.includes('Quote request'));
+      assert.equal(await form.locator('button[type=submit] span').textContent(),'Request a quote');
+      await click('measurement-settings');
+      await click('measurement-accept');
+      await page.waitForFunction(()=>window.__testEvents?.some(a=>a[1]==='page_viewed'));
+      assert.equal(await count('page_viewed'),1);
+      responseStatus=400;
+      await submit();
+      assert.equal(await count('lead_created'),0);
+      responseStatus=200;
+      await submit();
+      assert.equal(await count('lead_created'),1,'One conversion per accepted quote');
+      await click('measurement-settings');
+      await click('measurement-decline');
+      await submit();
+      assert.equal(await count('lead_created'),1);
+    }
+    await page.goto(origin+'/?qa=1#showcase');
+    await page.waitForURL('**/market-research.html?qa=1#showcase');
+    assert.equal(await page.locator('#showcase').count(),1);
     await context.close();
     console.log('PASS mock SDK/form browser acceptance '+viewport.width+'px');
   }

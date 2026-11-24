@@ -506,3 +506,11 @@ p { margin: 0 0 1em; }
   .service-outcome { padding: 20px; }
   .service-outcome .btn { width: 100%; text-align: center; line-height: 1.25; }
 }
+
+/* Dedicated service pages */
+.nav-links a[aria-current="page"] { color: var(--ink); background: var(--tint); }
+.service-detail { padding-top: clamp(48px, 6vw, 84px); padding-bottom: clamp(40px, 5vw, 68px); }
+.service-detail .section-head { max-width: 900px; }
+.service-detail .section-head h1 { margin-bottom: 20px; font-size: clamp(2.3rem, 4.8vw, 4rem); }
+.quote-section { background: var(--tint); scroll-margin-top: 78px; }
+.quote-section .field > p { margin: 6px 0 0; }
