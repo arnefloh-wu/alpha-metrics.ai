@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>alpha-metrics.ai | Market research for brands in Austria and the DACH region</title>
   <meta name="description" content="Brand tracking, consumer surveys and decision-ready analytics from Vienna. Every result comes with confidence intervals, quality controls and honest limits.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'none'; base-uri 'self'">
   <meta name="theme-color" content="#fbfaf8" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#121211" media="(prefers-color-scheme: dark)">
   <link rel="canonical" href="https://alpha-metrics.ai/">
@@ -389,20 +389,7 @@
           <p><a class="contact-mail" href="mailto:info@alpha-metrics.ai"><svg width="22" height="22" aria-hidden="true"><use href="#i-mail"/></svg>info@alpha-metrics.ai</a></p>
           <p class="muted small">Vienna, Austria &middot; <a href="https://www.linkedin.com/company/112210061/" rel="noopener">LinkedIn</a></p>
         </div>
-        <form class="card form reveal" id="contact-form" action="https://formspree.io/f/mojnbvow" method="POST" novalidate>
-          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required><div class="err" id="err-name" role="alert"></div></div>
-          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><div class="err" id="err-email" role="alert"></div></div>
-          <div class="field"><label for="f-company">Company <span class="muted">(optional)</span></label><input id="f-company" name="company" type="text" autocomplete="organization"></div>
-          <div class="field"><label for="f-message">Your question</label><textarea id="f-message" name="message" required></textarea><div class="err" id="err-message" role="alert"></div></div>
-          <div class="sr-only" aria-hidden="true"><label>Leave this empty <input name="_gotcha" type="text" tabindex="-1" autocomplete="off"></label></div>
-          <div>
-            <label class="consent"><input type="checkbox" name="consent" value="yes"><span>I agree that my details are sent to our form provider, Formspree, so that alpha-metrics.ai can reply. See the <a href="datenschutz.html">privacy notice</a>.</span></label>
-            <div class="err" id="err-consent" role="alert"></div>
-          </div>
-          <button class="btn btn-primary" type="submit"><span>Send message</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
-          <div class="form-ok" id="form-ok" tabindex="-1" role="status"><svg aria-hidden="true"><use href="#i-check"/></svg>Thank you. We will be in touch.</div>
-          <p class="err" id="form-fail" role="alert" hidden>The message could not be sent. Please write to <a href="mailto:info@alpha-metrics.ai">info@alpha-metrics.ai</a> instead.</p>
-        </form>
+        <div class="card"><h3>Contact us</h3><p>Please send your enquiry directly by email.</p><p><a href="mailto:info@alpha-metrics.ai">info@alpha-metrics.ai</a></p></div>
       </div>
     </section>
   </main>
