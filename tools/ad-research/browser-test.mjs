@@ -125,6 +125,9 @@ try {
     await page.locator('#verdict .pill').first().waitFor();
     assert.equal(new URL(page.url()).pathname,'/use-cases.html');
     assert.equal(await page.locator('.nav-links a[aria-current="page"]').textContent(),'Use Cases');
+    if (viewport.width > 860) {
+      assert.equal(await page.locator('.nav-links').evaluate(menu => menu.offsetHeight <= 48),true);
+    }
     assert.equal(await page.locator('#verdict .pill').count(),6);
     assert.equal(await page.locator('#hm tr[data-i]').count(),45);
     const baseline = await page.locator('#verdict').textContent();
