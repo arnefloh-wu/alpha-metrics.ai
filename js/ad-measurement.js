@@ -9,7 +9,8 @@
   var decline = document.getElementById('measurement-decline');
   if (!panel || !settings || !accept || !decline) return;
   settings.hidden = false;
-  var allowed = false, initialized = false, viewed = false;
+  var allowed = false, initialized = false, ready = false, viewed = false;
+  var pendingLeads = 0;
 
   function readChoice() {
     try {
@@ -29,9 +30,21 @@
     });
   }
   function measure(name, type) {
-    if (!allowed || !initialized || typeof window.oaiq !== 'function') return;
+    if (!allowed || !ready || typeof window.oaiq !== 'function') return;
     try { window.oaiq('measure', name, {type: type}, {opt_out: true}); }
     catch (e) { /* measurement must not interfere with the site */ }
+  }
+  function flush() {
+    if (!allowed || !ready) return;
+    window.oaiq('consent', true);
+    if (!viewed) {
+      viewed = true;
+      measure('page_viewed', 'contents');
+    }
+    while (pendingLeads > 0) {
+      pendingLeads -= 1;
+      measure('lead_created', 'customer_action');
+    }
   }
   function enable() {
     allowed = true;
@@ -47,16 +60,15 @@
       var sdk = document.createElement('script');
       sdk.async = true;
       sdk.src = 'https://bzrcdn.openai.com/sdk/oaiq.min.js';
+      sdk.onload = function () { ready = true; flush(); };
+      sdk.onerror = function () { pendingLeads = 0; };
       document.head.appendChild(sdk);
     }
-    window.oaiq('consent', true);
-    if (!viewed) {
-      viewed = true;
-      measure('page_viewed', 'contents');
-    }
+    flush();
   }
   function disable() {
     allowed = false;
+    pendingLeads = 0;
     if (initialized && typeof window.oaiq === 'function') {
       try { window.oaiq('consent', false); } catch (e) { /* clear local cookies below */ }
     }
@@ -90,7 +102,11 @@
     if (location.hash === '#measurement-settings') showPanel(true);
   });
   window.alphaAdsMeasurement = {
-    lead: function () { measure('lead_created', 'customer_action'); }
+    lead: function () {
+      if (!allowed) return;
+      if (ready) measure('lead_created', 'customer_action');
+      else pendingLeads += 1;
+    }
   };
   apply(readChoice());
   if (location.hash === '#measurement-settings') showPanel(false);
