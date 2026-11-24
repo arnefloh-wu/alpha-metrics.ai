@@ -50,9 +50,7 @@ publishing something half right.
   (funnel stages, age bands) use a one-hue ramp. All ramps were checked with the
   data-visualisation palette validator in light and dark mode, and text and mark
   contrast was computed, not judged by eye. Every chart has a table view.
-- **Privacy by construction.** No cookies, no analytics, no third-party fonts, scripts or
-  images. A Content-Security-Policy meta tag enforces this; the only allowed outside
-  request is the contact form post to Formspree. System fonts are used throughout.
+- **Privacy by construction.** No advertising SDK is loaded without affirmative visitor consent. The homepage supports optional OpenAI advertising measurement and a separate withdrawal control. Formspree remains independent of advertising consent. System fonts are used throughout. See `tools/ad-research/measurement.md` before deployment.
 - **Accessibility.** Skip link, semantic headings, keyboard-focusable chart marks with
   the same tooltip as hover, reduced-motion support, light and dark themes.
 
@@ -66,6 +64,8 @@ publishing something half right.
    - `www`: a `CNAME` record pointing to `arnefloh-wu.github.io`.
 
 ## Before the site is promoted
+
+- Review and complete the advertising measurement privacy disclosure and verify SDK behavior, consent withdrawal and event delivery before enabling tracking in production.
 
 - Complete the red fields in `impressum.html` and `datenschutz.html` and have a lawyer
   review both. Austrian law requires an Impressum on a commercial website.
