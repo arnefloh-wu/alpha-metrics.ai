@@ -77,81 +77,83 @@
   <main id="main" class="wrap scorecard">
     <div class="use-cases-intro">
       <h1>Use Cases</h1>
-      <nav class="row" aria-label="Jump to a use case">
-        <a class="btn btn-ghost" href="#market-scorecard">Latin America Market Scorecard</a>
-        <a class="btn btn-ghost" href="#brand-funnel">ZINTO brand funnel</a>
-      </nav>
-    </div>
-    <div class="scorecard-hero" id="market-scorecard">
-     <p class="eyebrow">Market research case study</p>
-     <h2>Latin America Market Scorecard</h2>
-     <p class="scorecard-question">Which Latin American market should a European premium coffee brand enter first?</p>
-     <p class="lede">We ranked six markets on 45 public indicators across the six PESTEL dimensions. Change the weights or the normalisation below and the ranking is recalculated from the raw data.</p>
-     <a class="btn btn-primary" href="#h-model">Explore the live scorecard <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-     <div class="pills" id="verdict" aria-live="polite"></div>
-    </div>
-
-    <section aria-labelledby="h-method">
-     <h3 id="h-method">One weighted score, built in five steps</h3>
-     <div class="scorecard-steps">
-      <div class="step"><span class="n">Step 1</span><h4>Collect</h4><p>45 indicators per country: 5 political, 10 economic, 10 social, 10 technological, 5 environmental, 5 legal. Latest year, one public source each.</p></div>
-      <div class="step"><span class="n">Step 2</span><h4>Normalise</h4><p>Min-max: <code>100·(x−min)/(max−min)</code>, reversed where lower is better. Checked against T-scores: <code>50+10·z</code>.</p></div>
-      <div class="step"><span class="n">Step 3</span><h4>Weight</h4><p>One weight per dimension, fixed before the data were collected and split equally among its indicators.</p></div>
-      <div class="step"><span class="n">Step 4</span><h4>Aggregate</h4><p>Score = <code>Σ weight × dimension mean</code>. A weighted sum, so a strength can offset a weakness.</p></div>
-      <div class="step"><span class="n">Step 5</span><h4>Stress-test</h4><p>Re-rank under four alternative weight sets and with T-scores. A rank that holds is a result you can decide on.</p></div>
-     </div>
-    </section>
-
-    <section aria-labelledby="h-model">
-     <noscript><p>Enable JavaScript to change weights and compare market rankings.</p></noscript>
-     <h3 id="h-model">Live model</h3>
-     <div class="controls">
-      <div class="row"><span class="lbl">Weight set</span><span id="presets" class="row"></span></div>
-      <div class="sliders" id="sliders"></div>
-      <div class="row"><span class="lbl">Normalisation</span>
-       <button class="seg" id="m-mm" aria-pressed="true">Min-max, 0–100</button>
-       <button class="seg" id="m-t" aria-pressed="false">T-score, 50 = average</button>
+      <div class="case-tabs" id="case-tabs" aria-label="Use cases">
+        <a id="tab-market-scorecard" href="#market-scorecard">Latin America Market Scorecard</a>
+        <a id="tab-brand-funnel" href="#brand-funnel">ZINTO brand funnel</a>
       </div>
-     </div>
-     <div class="scorecard-split">
-      <figure class="card">
-       <div><div class="ctitle" id="t-bars"></div><div class="csub" id="s-bars"></div></div>
-       <div class="scorecard-chart" id="bars"></div>
-       <details><summary>Show as table</summary><div class="tw"><table id="bartable"></table></div></details>
-       <figcaption>Base: six markets, 45 indicators each. Select a bar to see that country’s breakdown.</figcaption>
-      </figure>
-      <figure class="card">
-       <div><div class="ctitle" id="t-drv"></div><div class="csub" id="s-drv"></div></div>
-       <div class="scorecard-chart" id="drivers"></div>
-       <figcaption id="c-drv"></figcaption>
-      </figure>
-     </div>
-    </section>
+    </div>
+    <section class="case-panel scorecard-panel" id="market-scorecard" aria-labelledby="h-market-scorecard">
+      <div class="scorecard-hero">
+       <p class="eyebrow">Market research case study</p>
+       <h2 id="h-market-scorecard">Latin America Market Scorecard</h2>
+       <p class="scorecard-question">Which Latin American market should a European premium coffee brand enter first?</p>
+       <p class="lede">We ranked six markets on 45 public indicators across the six PESTEL dimensions. Change the weights or the normalisation below and the ranking is recalculated from the raw data.</p>
+       <a class="btn btn-primary" href="#h-model">Explore the live scorecard <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+       <div class="pills" id="verdict" aria-live="polite"></div>
+      </div>
 
-    <section aria-labelledby="h-rob">
-     <h3 id="h-rob">Ranking across weight sets</h3>
-     <p class="note">Rank of each country under the five fixed weight sets, and under your weights if you changed them, with the current normalisation. A narrow range means the result does not depend on one choice of weights.</p>
-     <div class="card tw"><table id="rob"></table></div>
-    </section>
+      <section aria-labelledby="h-method">
+       <h3 id="h-method">One weighted score, built in five steps</h3>
+       <div class="scorecard-steps">
+        <div class="step"><span class="n">Step 1</span><h4>Collect</h4><p>45 indicators per country: 5 political, 10 economic, 10 social, 10 technological, 5 environmental, 5 legal. Latest year, one public source each.</p></div>
+        <div class="step"><span class="n">Step 2</span><h4>Normalise</h4><p>Min-max: <code>100·(x−min)/(max−min)</code>, reversed where lower is better. Checked against T-scores: <code>50+10·z</code>.</p></div>
+        <div class="step"><span class="n">Step 3</span><h4>Weight</h4><p>One weight per dimension, fixed before the data were collected and split equally among its indicators.</p></div>
+        <div class="step"><span class="n">Step 4</span><h4>Aggregate</h4><p>Score = <code>Σ weight × dimension mean</code>. A weighted sum, so a strength can offset a weakness.</p></div>
+        <div class="step"><span class="n">Step 5</span><h4>Stress-test</h4><p>Re-rank under four alternative weight sets and with T-scores. A rank that holds is a result you can decide on.</p></div>
+       </div>
+      </section>
 
-    <section aria-labelledby="h-ind">
-     <h3 id="h-ind">The 45 indicators behind the score</h3>
-     <p class="note">Normalised score per indicator and country. Higher scores indicate more favourable values within the six markets. Select an indicator to see its raw values and where min-max and T-scores disagree.</p>
-     <div class="scorecard-split">
-      <div class="card tw"><table class="hm" id="hm"></table></div>
-      <div class="card" id="detail"></div>
-     </div>
-    </section>
+      <section aria-labelledby="h-model">
+       <noscript><p>Enable JavaScript to change weights and compare market rankings.</p></noscript>
+       <h3 id="h-model">Live model</h3>
+       <div class="controls">
+        <div class="row"><span class="lbl">Weight set</span><span id="presets" class="row"></span></div>
+        <div class="sliders" id="sliders"></div>
+        <div class="row"><span class="lbl">Normalisation</span>
+         <button class="seg" id="m-mm" aria-pressed="true">Min-max, 0–100</button>
+         <button class="seg" id="m-t" aria-pressed="false">T-score, 50 = average</button>
+        </div>
+       </div>
+       <div class="scorecard-split">
+        <figure class="card">
+         <div><div class="ctitle" id="t-bars"></div><div class="csub" id="s-bars"></div></div>
+         <div class="scorecard-chart" id="bars"></div>
+         <details><summary>Show as table</summary><div class="tw"><table id="bartable"></table></div></details>
+         <figcaption>Base: six markets, 45 indicators each. Select a bar to see that country’s breakdown.</figcaption>
+        </figure>
+        <figure class="card">
+         <div><div class="ctitle" id="t-drv"></div><div class="csub" id="s-drv"></div></div>
+         <div class="scorecard-chart" id="drivers"></div>
+         <figcaption id="c-drv"></figcaption>
+        </figure>
+       </div>
+      </section>
 
-    <section aria-labelledby="h-use">
-     <h3 id="h-use">What the method can and cannot carry</h3>
-     <div class="card">
-      <p>The model works for any screening that compares a fixed set of markets on many indicators. Swap the indicators, set the weights before you look at the data, and report the rank range rather than a single rank.</p>
-      <p><strong>Limits.</strong> With six countries, min-max stretches small gaps, and one outlier (Mexico’s tourist arrivals, Brazil’s coffee market) can push the others towards zero. A weighted sum lets a large market offset weak institutions, so knock-out conditions such as a prohibitive tariff need a separate filter. Some indicators are proxies, and data years range from 2015 to 2026.</p>
-     </div>
+      <section aria-labelledby="h-rob">
+       <h3 id="h-rob">Ranking across weight sets</h3>
+       <p class="note">Rank of each country under the five fixed weight sets, and under your weights if you changed them, with the current normalisation. A narrow range means the result does not depend on one choice of weights.</p>
+       <div class="card tw"><table id="rob"></table></div>
+      </section>
+
+      <section aria-labelledby="h-ind">
+       <h3 id="h-ind">The 45 indicators behind the score</h3>
+       <p class="note">Normalised score per indicator and country. Higher scores indicate more favourable values within the six markets. Select an indicator to see its raw values and where min-max and T-scores disagree.</p>
+       <div class="scorecard-split">
+        <div class="card tw"><table class="hm" id="hm"></table></div>
+        <div class="card" id="detail"></div>
+       </div>
+      </section>
+
+      <section aria-labelledby="h-use">
+       <h3 id="h-use">What the method can and cannot carry</h3>
+       <div class="card">
+        <p>The model works for any screening that compares a fixed set of markets on many indicators. Swap the indicators, set the weights before you look at the data, and report the rank range rather than a single rank.</p>
+        <p><strong>Limits.</strong> With six countries, min-max stretches small gaps, and one outlier (Mexico’s tourist arrivals, Brazil’s coffee market) can push the others towards zero. A weighted sum lets a large market offset weak institutions, so knock-out conditions such as a prohibitive tariff need a separate filter. Some indicators are proxies, and data years range from 2015 to 2026.</p>
+       </div>
+      </section>
+      <p class="note scorecard-source">Data: public sources (World Bank WDI, WGI and LPI, UN agencies, OECD, Transparency International, WIPO, Yale EPI, ND-GAIN, EU Access2Markets, Euromonitor and Statista via a university library, among others), collected by student groups in the course International Business Projects, WU Vienna, winter term 2026/27. Status November 2026. Scores compare the six markets with each other; they are not forecasts.</p>
     </section>
-    <p class="note scorecard-source">Data: public sources (World Bank WDI, WGI and LPI, UN agencies, OECD, Transparency International, WIPO, Yale EPI, ND-GAIN, EU Access2Markets, Euromonitor and Statista via a university library, among others), collected by student groups in the course International Business Projects, WU Vienna, winter term 2026/27. Status November 2026. Scores compare the six markets with each other; they are not forecasts.</p>
-    <section class="scorecard-hero brand-funnel" id="brand-funnel" aria-labelledby="h-brand-funnel">
+    <section class="case-panel scorecard-hero brand-funnel" id="brand-funnel" aria-labelledby="h-brand-funnel">
       <p class="eyebrow">Market research case study</p>
       <h2 id="h-brand-funnel">ZINTO brand funnel</h2>
       <p class="lede">Where does a snack bar brand lose people between awareness and purchase? This Austrian example compares ZINTO with the category at each step.</p>
@@ -201,6 +203,7 @@
   <script src="js/data.js"></script>
   <script src="js/charts.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/use-cases.js"></script>
   <script src="js/market-scorecard.js"></script>
 </body>
 </html>
