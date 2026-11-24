@@ -94,6 +94,7 @@
     var bad = validate();
     if (bad) { bad.focus(); return; }
     var btn = form.querySelector('button[type="submit"]'), label = btn.querySelector('span');
+    var submitLabel = label.textContent;
     sending = true; btn.disabled = true; label.textContent = 'Sending…';
     fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (r) {
@@ -103,7 +104,7 @@
         form.reset(); ok.classList.add('on'); ok.focus();
       })
       .catch(function () { fail.hidden = false; })
-      .then(function () { sending = false; btn.disabled = false; label.textContent = 'Send message'; });
+      .then(function () { sending = false; btn.disabled = false; label.textContent = submitLabel; });
   });
   Array.prototype.forEach.call(form.querySelectorAll('input, textarea'), function (f) {
     f.addEventListener('input', function () { if (f.getAttribute('aria-invalid')) setErr(f.name, ''); });
