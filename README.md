@@ -1,8 +1,8 @@
 # alpha-metrics.ai
 
 Website of alpha-metrics.ai, an independent research and AI practice in Vienna:
-market research, AI advertising, AI consulting and AI training for businesses in
-Austria and the DACH region. Live at [alpha-metrics.ai](https://alpha-metrics.ai).
+market research, AI advertising, AI consulting and AI training for businesses
+worldwide. Live at [alpha-metrics.ai](https://alpha-metrics.ai).
 
 The site is static: plain HTML, CSS and JavaScript, no build step, no dependencies.
 
