@@ -12,6 +12,7 @@ The site is static: plain HTML, CSS and JavaScript, no build step, no dependenci
 |---|---|
 | `index.html` | Homepage: four service links, about and general contact |
 | `market-research.html` | Market research, quote form, methodology, showcase and standards |
+| `assets/video/` | Self-hosted brand funnel introduction (MP4), poster and English WebVTT captions; the market research page includes a text transcript |
 | `ai-advertising.html`, `ai-consulting.html`, `ai-training.html` | Dedicated service pages, each with its own quote form |
 | `css/site.css` | Styles, with validated light and dark colour tokens |
 | `js/charts.js` | The showcase charts (plain DOM, tooltips, table views) |
