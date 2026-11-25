@@ -40,6 +40,8 @@
     if (!viewed) {
       viewed = true;
       measure('page_viewed', 'contents');
+      // The ChatGPT Ads campaign counts conversions on contents_viewed.
+      measure('contents_viewed', 'contents');
     }
     while (pendingLeads > 0) {
       pendingLeads -= 1;
