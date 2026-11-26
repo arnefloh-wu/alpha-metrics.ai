@@ -21,10 +21,10 @@ await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0
 const origin = 'http://127.0.0.1:'+server.address().port;
 let browser;
 try {
-  browser = await chromium.launch({headless:true});
+  browser = await chromium.launch({headless:true, executablePath: process.env.CHROMIUM_EXECUTABLE || undefined});
   for (const viewport of [{width:1280,height:900},{width:390,height:844}]) {
     const context = await browser.newContext({viewport});
-    let loads=0, submissions=0, responseStatus=200, lastPayload='';
+    let loads=0, submissions=0, responseStatus=200, responseSuccess=true, responseIsJson=true, lastPayload='';
     await context.route('**/*', async route => {
       const url=new URL(route.request().url());
       if(url.origin===origin) return route.continue();
@@ -33,11 +33,11 @@ try {
         return route.fulfill({contentType:'text/javascript',body:
           'window.__testEvents=[]; const queued=window.oaiq.q; window.oaiq=(...args)=>window.__testEvents.push(args); for(const args of queued) window.oaiq(...args);'});
       }
-      if(url.origin==='https://formspree.io') {
+      if(url.origin==='https://form.taxi' && /^\/s\/[^/]+$/.test(url.pathname)) {
         if(route.request().method()==='OPTIONS') return route.fulfill({status:204,headers:{'access-control-allow-origin':origin,'access-control-allow-methods':'POST, OPTIONS','access-control-allow-headers':'content-type, accept'}});
         submissions++;
         lastPayload=route.request().postData() || '';
-        return route.fulfill({status:responseStatus,contentType:'application/json',headers:{'access-control-allow-origin':origin},body:JSON.stringify({ok:responseStatus===200})});
+        return route.fulfill({status:responseStatus,contentType:responseIsJson?'application/json':'text/html',headers:{'access-control-allow-origin':origin},body:responseIsJson?JSON.stringify({success:responseSuccess}):'<html>Not accepted</html>'});
       }
       return route.abort();
     });
@@ -72,7 +72,20 @@ try {
     await submit();
     assert.equal(await count('lead_created'),0,'Failed request must not be counted');
     responseStatus=200;
+    responseSuccess=false;
     await submit();
+    assert.equal(await page.locator('#form-fail').isVisible(),true,'Provider rejection shows an error');
+    assert.equal(await form.locator('[name=message]').inputValue(),'Synthetic test inquiry; not a real lead.');
+    assert.equal(await count('lead_created'),0,'HTTP 200 with provider rejection must not count');
+    responseSuccess=true;
+    responseIsJson=false;
+    await submit();
+    assert.equal(await page.locator('#form-fail').isVisible(),true,'Unexpected HTML shows an error');
+    assert.equal(await count('lead_created'),0,'Unexpected response must not count');
+    responseIsJson=true;
+    await submit();
+    assert.equal(await page.locator('#form-ok').isVisible(),true,'Provider acceptance shows success');
+    assert.equal(await page.locator('#form-fail').isVisible(),false);
     assert.equal(await count('lead_created'),1,'Successful request is counted exactly once');
     await click('measurement-settings');
     await click('measurement-decline');

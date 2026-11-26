@@ -99,6 +99,10 @@
     fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (r) {
         if (!r.ok) throw new Error('status ' + r.status);
+        return r.json();
+      })
+      .then(function (response) {
+        if (!response || response.success !== true) throw new Error('submission not accepted');
         // Only accepted submissions count; measurement must never break the form.
         try { if (window.alphaAdsMeasurement) window.alphaAdsMeasurement.lead(); } catch (e) { /* optional measurement */ }
         form.reset(); ok.classList.add('on'); ok.focus();
