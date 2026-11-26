@@ -577,3 +577,4 @@ p { margin: 0 0 1em; }
 .ad-lessons strong { color: var(--ink); }
 @media (max-width: 860px) { .ad-case { grid-template-columns: 1fr; } .ad-case-sujet { max-width: 320px; } }
 @media (max-width: 520px) { .ad-kpis { grid-template-columns: repeat(2, 1fr); } }
+.ad-kpis + .chart-foot { margin-top: 12px; }

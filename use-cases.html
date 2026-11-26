@@ -80,6 +80,7 @@
       <div class="case-tabs" id="case-tabs" aria-label="Use cases">
         <a id="tab-market-scorecard" href="#market-scorecard">Latin America Market Scorecard</a>
         <a id="tab-brand-funnel" href="#brand-funnel">ZINTO brand funnel</a>
+        <a id="tab-chatgpt-ads" href="#chatgpt-ads">ChatGPT Ads campaign</a>
       </div>
     </div>
     <section class="case-panel scorecard-panel" id="market-scorecard" aria-labelledby="h-market-scorecard">
@@ -178,6 +179,36 @@
       <p><a href="market-research.html#showcase">See the full ZINTO brand study</a></p>
       <p><a href="market-research.html#brand-funnel-video">Watch our 35-second brand funnel video</a></p>
     </section>
+    <section class="case-panel scorecard-hero ad-case-panel" id="chatgpt-ads" aria-labelledby="h-chatgpt-ads">
+      <p class="eyebrow">AI advertising case study</p>
+      <h2 id="h-chatgpt-ads">Our own ChatGPT Ads campaign</h2>
+      <p class="lede">What does advertising in ChatGPT deliver, and what does it cost? We advertise alpha-metrics.ai there ourselves: Austria, an &euro;85 budget, live since 25 November 2026. The figures are totals since launch, read from OpenAI Ads Manager every morning.</p>
+      <p class="note"><strong>Real campaign, real data.</strong></p>
+      <div class="ad-case">
+        <figure class="card ad-case-sujet">
+          <img src="showcase/chatgpt-ads/ad.png" alt="The alpha-metrics.ai ad image shown in ChatGPT" width="600" height="600" loading="lazy">
+          <figcaption>The ad image used in ChatGPT</figcaption>
+        </figure>
+        <div class="ad-case-body">
+          <dl class="ad-kpis" id="ad-kpis">
+            <div class="card"><dt>Impressions</dt><dd data-k="impressions">122</dd></div>
+            <div class="card"><dt>People reached</dt><dd data-k="reach">102</dd></div>
+            <div class="card"><dt>Clicks</dt><dd data-k="clicks">2</dd></div>
+            <div class="card"><dt>Click-through rate</dt><dd data-k="ctr">1.64%</dd></div>
+            <div class="card"><dt>Spend</dt><dd data-k="spend">&euro;23.32</dd></div>
+            <div class="card"><dt>Cost per 1,000 impressions</dt><dd data-k="cpm">&euro;191</dd></div>
+          </dl>
+          <p class="chart-foot" id="ad-asof">Totals since launch, OpenAI Ads Manager. Last check: 26 Nov 2026, 09:04 (Vienna). A very small base: read these as early delivery figures, not benchmarks.</p>
+          <ul class="ad-lessons">
+            <li><strong>Decide the goal first.</strong> Campaign goal and conversion event cannot be changed once a campaign exists.</li>
+            <li><strong>Measure what the campaign counts.</strong> Our pixel did not send the event the campaign optimised for until we changed the site code.</li>
+            <li><strong>Plan budgets on real prices.</strong> In our first days, 1,000 impressions cost about &euro;190. At that price a few hundred euros buy only a small sample for an A/B test.</li>
+          </ul>
+          <a class="btn btn-ghost" href="showcase/chatgpt-ads/">See the live campaign dashboard <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <p><a href="ai-advertising.html">How we plan and evaluate AI advertising for clients</a></p>
+    </section>
     <aside class="service-outcome" aria-labelledby="case-contact">
       <div>
         <h3 id="case-contact">What decision could research help you make?</h3>
@@ -206,5 +237,6 @@
   <script src="js/site.js"></script>
   <script src="js/use-cases.js"></script>
   <script src="js/market-scorecard.js"></script>
+  <script src="js/ad-case.js"></script>
 </body>
 </html>
