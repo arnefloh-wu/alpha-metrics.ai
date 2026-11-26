@@ -138,6 +138,34 @@
           <svg aria-hidden="true"><use href="#i-info"/></svg>
           <p><strong>Performance is not necessarily causality.</strong> Without verified random allocation, a comparison is a quasi-experimental field study. Algorithmic delivery, repeated impressions and aggregate reporting limit causal inference and audience-level conclusions. We report those limits rather than treating a higher click-through rate as proof of a causal effect.</p>
         </div>
+        <div class="section-head reveal sample-head" id="use-case">
+          <p class="eyebrow">Use case</p>
+          <h3>Our own ChatGPT Ads campaign</h3>
+          <p class="lede">We advertise alpha-metrics.ai in ChatGPT ourselves: Austria, an &euro;85 budget, live since 25 November 2026. The figures below are totals since launch, read from OpenAI Ads Manager every morning.</p>
+        </div>
+        <div class="ad-case reveal">
+          <figure class="card ad-case-sujet">
+            <img src="showcase/chatgpt-ads/ad.png" alt="The alpha-metrics.ai ad image shown in ChatGPT" width="600" height="600" loading="lazy">
+            <figcaption>The ad image used in ChatGPT</figcaption>
+          </figure>
+          <div class="ad-case-body">
+            <dl class="ad-kpis" id="ad-kpis">
+              <div class="card"><dt>Impressions</dt><dd data-k="impressions">122</dd></div>
+              <div class="card"><dt>People reached</dt><dd data-k="reach">102</dd></div>
+              <div class="card"><dt>Clicks</dt><dd data-k="clicks">2</dd></div>
+              <div class="card"><dt>Click-through rate</dt><dd data-k="ctr">1.64%</dd></div>
+              <div class="card"><dt>Spend</dt><dd data-k="spend">&euro;23.32</dd></div>
+              <div class="card"><dt>Cost per 1,000 impressions</dt><dd data-k="cpm">&euro;191</dd></div>
+            </dl>
+            <p class="chart-foot" id="ad-asof">Totals since launch, OpenAI Ads Manager. Last check: 26 Nov 2026, 09:04 (Vienna). A very small base: read these as early delivery figures, not benchmarks.</p>
+            <ul class="ad-lessons">
+              <li><strong>Decide the goal first.</strong> Campaign goal and conversion event cannot be changed once a campaign exists.</li>
+              <li><strong>Measure what the campaign counts.</strong> Our pixel did not send the event the campaign optimised for until we changed the site code.</li>
+              <li><strong>Plan budgets on real prices.</strong> In our first days, 1,000 impressions cost about &euro;190. At that price a few hundred euros buy only a small sample for an A/B test.</li>
+            </ul>
+            <a class="btn btn-ghost" href="showcase/chatgpt-ads/">See the live campaign dashboard <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
         <div class="hero-cta reveal">
           <a class="btn btn-primary" href="#get-a-quote">Get a quote <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
@@ -188,5 +216,6 @@
   <div class="tt" id="tt" role="tooltip" hidden></div>
   <script src="js/ad-measurement.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/ad-case.js"></script>
 </body>
 </html>

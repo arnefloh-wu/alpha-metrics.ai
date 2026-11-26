@@ -562,3 +562,18 @@ p { margin: 0 0 1em; }
   .research-video { display: none; }
   .research-video-grid { grid-template-columns: 1fr; }
 }
+
+/* ---------- AI Advertising use case: own ChatGPT Ads campaign ---------- */
+.ad-case { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: clamp(20px, 3vw, 36px); align-items: start; }
+.ad-case-sujet { margin: 0; padding: 12px; }
+.ad-case-sujet img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.ad-case-sujet figcaption { margin-top: 10px; font-size: .86rem; color: var(--ink-3); }
+.ad-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; }
+.ad-kpis .card { padding: 14px 16px; }
+.ad-kpis dt { font-size: .86rem; color: var(--ink-3); }
+.ad-kpis dd { margin: 4px 0 0; font: 700 clamp(1.4rem, 2.4vw, 1.8rem)/1.15 var(--serif); color: var(--ink); font-variant-numeric: tabular-nums; }
+.ad-lessons { margin: 20px 0 22px; padding-left: 20px; color: var(--ink-2); }
+.ad-lessons li { margin: 6px 0; }
+.ad-lessons strong { color: var(--ink); }
+@media (max-width: 860px) { .ad-case { grid-template-columns: 1fr; } .ad-case-sujet { max-width: 320px; } }
+@media (max-width: 520px) { .ad-kpis { grid-template-columns: repeat(2, 1fr); } }
