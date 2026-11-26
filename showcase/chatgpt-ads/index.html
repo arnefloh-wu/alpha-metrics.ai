@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ChatGPT Ads results | alpha-metrics.ai</title>
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --page:#fbfaf8; --card:#ffffff; --tint:#f3f1ec; --ink:#0e1a2b; --ink2:#475467; --ink3:#5c6679;
+  --line:#e3e1db; --brand:#104281; --link:#1c5cab; --mark:#2a78d6; --grey:#8f8d86;
+  --good:#0ca30c; --bad:#d03b3b;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:system-ui,"Segoe UI",Roboto,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --page:#121211; --card:#1b1b1a; --tint:#22221f; --ink:#f2f1ec; --ink2:#c9c7c0; --ink3:#a3a199;
+  --line:#2f2e2b; --brand:#9cc3f3; --link:#9cc3f3; --mark:#3987e5; --grey:#7f7e77; color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 20px 56px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:26px}
+header img{height:26px;width:auto}
+.logo-dark{display:none}
+@media (prefers-color-scheme:dark){.logo-light{display:none}.logo-dark{display:inline}}
+.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3)}
+h1{font:700 clamp(26px,4vw,36px)/1.15 var(--serif);margin:6px 0 8px;letter-spacing:-.01em}
+h2{font:700 20px/1.25 var(--serif);margin:0 0 4px}
+.lede{color:var(--ink2);max-width:72ch;margin:0}
+.meta{color:var(--ink3);font-size:13px;margin-top:8px}
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin:26px 0}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:520px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi .k{font-size:12.5px;color:var(--ink3)}
+.kpi .v{font:700 28px/1.2 var(--serif);color:var(--brand);margin-top:4px;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12.5px;color:var(--ink3);margin-top:2px;min-height:1.2em}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.card .sub{color:var(--ink3);font-size:13px;margin:0 0 8px}
+.card svg{width:100%;height:auto;display:block}
+.note{font-size:12.5px;color:var(--ink3);margin:6px 0 0}
+section{margin-top:28px}
+table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12.5px;color:var(--ink3);font-weight:600}
+td.num,th.num{text-align:right}
+.tablewrap{overflow-x:auto}
+.campaign{display:grid;grid-template-columns:220px 1fr;gap:20px;align-items:start}
+@media(max-width:640px){.campaign{grid-template-columns:1fr}}
+.campaign img{width:100%;border-radius:10px;border:1px solid var(--line)}
+dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0}
+dt{color:var(--ink3)} dd{margin:0}
+footer{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink3);font-size:13px}
+footer a{color:var(--link)}
+.err{background:var(--tint);border-radius:10px;padding:14px;color:var(--ink2)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a href="https://alpha-metrics.ai/"><img class="logo-light" src="../../assets/logo/alpha-metrics-logo.svg" alt="alpha-metrics.ai" width="221" height="28"><img class="logo-dark" src="../../assets/logo/alpha-metrics-logo-dark.svg" alt="alpha-metrics.ai" width="221" height="28"></a>
+  <span class="kicker">Campaign results</span>
+</header>
+
+<div class="kicker">ChatGPT Ads · Austria · since 25 Nov 2026</div>
+<h1>ChatGPT Ads results</h1>
+<p class="lede" id="lede">Loading the latest figures…</p>
+<p class="meta" id="meta"></p>
+
+<div class="kpis" id="kpis"></div>
+
+<div class="grid">
+  <div class="card"><h2>Impressions</h2><p class="sub">Since launch, at each daily check</p><div id="c-imp"></div></div>
+  <div class="card"><h2>Clicks</h2><p class="sub">Since launch, at each daily check</p><div id="c-clk"></div></div>
+  <div class="card"><h2>Cost per click</h2><p class="sub">Spend since launch ÷ clicks since launch</p><div id="c-cpc"></div><p class="note" id="cpc-note"></p></div>
+</div>
+
+<section class="card">
+  <h2>Daily checks</h2>
+  <p class="sub">Totals since launch as read from OpenAI Ads Manager each morning at 9:00 (Vienna)</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Date</th><th>Status</th><th class="num">Impressions</th><th class="num">Reach</th><th class="num">Clicks</th><th class="num">CTR</th><th class="num">Spend</th><th class="num">Conversions</th><th>Note</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+</section>
+
+<section class="card campaign">
+  <img src="ad.png" alt="The alpha-metrics.ai ad image used in ChatGPT">
+  <div>
+    <h2>The campaign</h2>
+    <dl>
+      <dt>Advertiser</dt><dd>alpha-metrics.ai, Vienna</dd>
+      <dt>Platform</dt><dd>OpenAI Ads Manager (beta), ads in ChatGPT</dd>
+      <dt>Market</dt><dd>Austria</dd>
+      <dt>Goal</dt><dd>Conversions (event: Contents Viewed on alpha-metrics.ai)</dd>
+      <dt>Budget</dt><dd>€85 total</dd>
+      <dt>Status</dt><dd id="status">–</dd>
+    </dl>
+  </div>
+</section>
+
+<footer>
+  Data: OpenAI Ads Manager, read once a day; figures are totals since launch. <a href="results.csv">Download the CSV</a>.
+  · <a href="https://alpha-metrics.ai/">alpha-metrics.ai</a> · info@alpha-metrics.ai · Vienna
+</footer>
+</div>
+
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const nf = new Intl.NumberFormat('en-GB');
+  const eur = (v) => '€' + v.toFixed(2);
+  const num = (s) => { const v = parseFloat(String(s ?? '').replace('%','').replace(',','.')); return isNaN(v) ? null : v; };
+  const fmtDate = (d) => new Date(d + 'T12:00:00').toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'});
+  const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+  function parseCSV(text){
+    const rows = []; let row = [], cell = '', q = false;
+    for (let i = 0; i < text.length; i++){
+      const c = text[i];
+      if (q){ if (c === '"'){ if (text[i+1] === '"'){ cell += '"'; i++; } else q = false; } else cell += c; }
+      else if (c === '"') q = true;
+      else if (c === ','){ row.push(cell); cell = ''; }
+      else if (c === '\n' || c === '\r'){ if (c === '\r' && text[i+1] === '\n') i++; row.push(cell); cell = ''; if (row.some((x) => x !== '')) rows.push(row); row = []; }
+      else cell += c;
+    }
+    row.push(cell); if (row.some((x) => x !== '')) rows.push(row);
+    const head = rows.shift().map((h) => h.trim());
+    return rows.map((r) => Object.fromEntries(head.map((h, i) => [h, (r[i] ?? '').trim()])));
+  }
+
+  function line(el, pts, fmt, axisFmt){
+    const W = 340, H = 190, L = 46, R = 16, T = 18, B = 30;
+    if (!pts.length){ el.innerHTML = '<p class="note">No data yet.</p>'; return; }
+    const xs = pts.map((p) => +new Date(p.date + 'T12:00:00'));
+    const x0 = Math.min(...xs), x1 = Math.max(...xs);
+    const maxV = Math.max(...pts.map((p) => p.v)) || 1;
+    const yMax = maxV * 1.15;
+    const X = (t) => x1 === x0 ? (L + W - R) / 2 : L + (t - x0) / (x1 - x0) * (W - L - R);
+    const Y = (v) => T + (1 - v / yMax) * (H - T - B);
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img">`;
+    [0, .5, 1].forEach((f) => { const v = yMax * f, y = Y(v);
+      s += `<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="var(--line)"/>`;
+      s += `<text x="${L-6}" y="${y+4}" text-anchor="end" font-size="11" fill="var(--ink3)">${axisFmt(v)}</text>`; });
+    const d = pts.map((p, i) => `${i ? 'L' : 'M'}${X(xs[i]).toFixed(1)},${Y(p.v).toFixed(1)}`).join('');
+    if (pts.length > 1) s += `<path d="${d}" fill="none" stroke="var(--mark)" stroke-width="2.2"/>`;
+    pts.forEach((p, i) => { s += `<circle cx="${X(xs[i])}" cy="${Y(p.v)}" r="3.5" fill="var(--mark)"><title>${fmtDate(p.date)}: ${fmt(p.v)}</title></circle>`; });
+    const last = pts.length - 1;
+    s += `<text x="${Math.min(X(xs[last]), W - R)}" y="${Y(pts[last].v) - 9}" text-anchor="${pts.length > 1 ? 'end' : 'middle'}" font-size="12" font-weight="600" fill="var(--ink)">${fmt(pts[last].v)}</text>`;
+    const lab = (i, anchor) => `<text x="${X(xs[i])}" y="${H - 8}" text-anchor="${anchor}" font-size="11" fill="var(--ink3)">${new Date(xs[i]).toLocaleDateString('en-GB',{day:'numeric',month:'short'})}</text>`;
+    s += pts.length > 1 ? lab(0, 'start') + lab(last, 'end') : lab(0, 'middle');
+    el.innerHTML = s + '</svg>';
+  }
+
+  function delta(cur, prev, key, fmt){
+    if (!prev) return 'first check';
+    const a = num(cur[key]), b = num(prev[key]);
+    if (a == null || b == null) return '';
+    const dd = a - b;
+    return (dd >= 0 ? '+' : '−') + fmt(Math.abs(dd)) + ' since previous check';
+  }
+
+  fetch('results.csv', {cache: 'no-store'}).then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); }).then((text) => {
+    const rows = parseCSV(text).filter((r) => r.date).sort((a, b) => a.date.localeCompare(b.date));
+    if (!rows.length) throw new Error('empty');
+    const cur = rows.at(-1), prev = rows.length > 1 ? rows.at(-2) : null;
+    const imp = num(cur.impressions), clk = num(cur.clicks), spend = num(cur.spend_eur) ?? 0, conv = num(cur.conversions) ?? 0;
+    const ctr = imp ? clk / imp * 100 : 0;
+
+    $('lede').textContent = `${nf.format(imp)} impressions and ${nf.format(clk)} clicks since launch (CTR ${ctr.toFixed(2)}%), €${spend.toFixed(2)} spent of the €85 budget, ${nf.format(conv)} conversions.`;
+    $('meta').textContent = `Last check: ${fmtDate(cur.date)}, ${cur.time} (Vienna) · ${rows.length} daily check${rows.length > 1 ? 's' : ''}`;
+    $('status').textContent = cur.status || '–';
+
+    const tiles = [
+      ['Impressions', nf.format(imp), delta(cur, prev, 'impressions', nf.format)],
+      ['Reach', nf.format(num(cur.reach) ?? 0), delta(cur, prev, 'reach', nf.format)],
+      ['Clicks', nf.format(clk), delta(cur, prev, 'clicks', nf.format)],
+      ['CTR', ctr.toFixed(2) + '%', 'clicks ÷ impressions'],
+      ['Spend', eur(spend), `${(spend / 85 * 100).toFixed(0)}% of €85 budget`],
+      ['Conversions', nf.format(conv), cur.contents_viewed_seen === 'yes' ? 'Contents Viewed events arriving' : 'no Contents Viewed events yet'],
+    ];
+    $('kpis').innerHTML = tiles.map(([k, v, d]) => `<div class="kpi"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${esc(d)}</div></div>`).join('');
+
+    line($('c-imp'), rows.map((r) => ({date: r.date, v: num(r.impressions) ?? 0})), nf.format, (v) => nf.format(Math.round(v)));
+    line($('c-clk'), rows.map((r) => ({date: r.date, v: num(r.clicks) ?? 0})), nf.format, (v) => nf.format(Math.round(v * 10) / 10));
+    const cpc = rows.filter((r) => num(r.clicks) > 0 && num(r.spend_eur) != null).map((r) => ({date: r.date, v: num(r.spend_eur) / num(r.clicks)}));
+    line($('c-cpc'), cpc, eur, eur);
+    $('cpc-note').textContent = spend === 0
+      ? 'Ads Manager reports no spend yet, so cost per click shows €0.00 until billing is set up.'
+      : 'Average over all clicks since launch, not the cost of each day’s clicks.';
+
+    $('rows').innerHTML = rows.slice().reverse().map((r) => `<tr><td>${fmtDate(r.date)}</td><td>${esc(r.status)}</td><td class="num">${nf.format(num(r.impressions) ?? 0)}</td><td class="num">${nf.format(num(r.reach) ?? 0)}</td><td class="num">${nf.format(num(r.clicks) ?? 0)}</td><td class="num">${esc(r.ctr)}</td><td class="num">${eur(num(r.spend_eur) ?? 0)}</td><td class="num">${nf.format(num(r.conversions) ?? 0)}</td><td>${esc(r.note)}</td></tr>`).join('');
+  }).catch(() => {
+    $('lede').innerHTML = '<span class="err">The results file could not be loaded. Please try again later.</span>';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+date,time,status,impressions,reach,clicks,ctr,spend_eur,conversions,contents_viewed_seen,note
+2026-11-25,22:03,Wird bereitgestellt,107,92,2,1.87%,0.00,0,no,"Replaces 21:00 baseline (104/91/1); Contents Viewed 0 events so far, fix live since 21:55; 2 active warnings; billing not set up"
+2026-11-26,09:04,Wird bereitgestellt,122,102,2,1.64%,23.32,0,yes,"Contents Viewed 14 events (60 total events); Conversions cell shows 'Ereignisqualität ausstehend'; billing now set up (card on file, €15 charged 25 Nov, open balance €8.32); avg CPM €191.11, CPC €11.66; 2 active warnings"
