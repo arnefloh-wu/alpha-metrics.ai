@@ -138,7 +138,8 @@ footer a{color:var(--link)}
     const xs = pts.map((p) => +new Date(p.date + 'T12:00:00'));
     const x0 = Math.min(...xs), x1 = Math.max(...xs);
     const maxV = Math.max(...pts.map((p) => p.v)) || 1;
-    const yMax = maxV * 1.15;
+    const raw = maxV * 1.15, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    const yMax = [2, 4, 6, 8, 10].map((m) => m * mag).find((v) => v >= raw);
     const X = (t) => x1 === x0 ? (L + W - R) / 2 : L + (t - x0) / (x1 - x0) * (W - L - R);
     const Y = (v) => T + (1 - v / yMax) * (H - T - B);
     let s = `<svg viewBox="0 0 ${W} ${H}" role="img">`;
@@ -186,11 +187,11 @@ footer a{color:var(--link)}
 
     line($('c-imp'), rows.map((r) => ({date: r.date, v: num(r.impressions) ?? 0})), nf.format, (v) => nf.format(Math.round(v)));
     line($('c-clk'), rows.map((r) => ({date: r.date, v: num(r.clicks) ?? 0})), nf.format, (v) => nf.format(Math.round(v * 10) / 10));
-    const cpc = rows.filter((r) => num(r.clicks) > 0 && num(r.spend_eur) != null).map((r) => ({date: r.date, v: num(r.spend_eur) / num(r.clicks)}));
+    const cpc = rows.filter((r) => num(r.clicks) > 0 && num(r.spend_eur) > 0).map((r) => ({date: r.date, v: num(r.spend_eur) / num(r.clicks)}));
     line($('c-cpc'), cpc, eur, eur);
     $('cpc-note').textContent = spend === 0
       ? 'Ads Manager reports no spend yet, so cost per click shows €0.00 until billing is set up.'
-      : 'Average over all clicks since launch, not the cost of each day’s clicks.';
+      : 'Average over all clicks since launch, not the cost of each day’s clicks. Checks before spend was reported are left out.';
 
     $('rows').innerHTML = rows.slice().reverse().map((r) => `<tr><td>${fmtDate(r.date)}</td><td>${esc(r.status)}</td><td class="num">${nf.format(num(r.impressions) ?? 0)}</td><td class="num">${nf.format(num(r.reach) ?? 0)}</td><td class="num">${nf.format(num(r.clicks) ?? 0)}</td><td class="num">${esc(r.ctr)}</td><td class="num">${eur(num(r.spend_eur) ?? 0)}</td><td class="num">${nf.format(num(r.conversions) ?? 0)}</td><td>${esc(r.note)}</td></tr>`).join('');
   }).catch(() => {
