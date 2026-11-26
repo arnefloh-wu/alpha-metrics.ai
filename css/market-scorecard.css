@@ -166,3 +166,6 @@
 @media (max-width: 500px) {
   .scorecard-steps, .scorecard .sliders { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* The ChatGPT Ads tab has its own contact box; hide the research one while it is open. */
+.scorecard:has(#chatgpt-ads:not([hidden])) > .research-outcome { display: none; }
